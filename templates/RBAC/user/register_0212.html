@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理-登陆</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/static/lib/layui-v2.5.4/css/layui.css" media="all">
+    <!--[if lt IE 9]>
+{#    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>#}
+{#    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>#}
+    <![endif]-->
+    <style>
+        html, body {width: 100%;height: 100%;overflow: hidden}
+        body {background: #009688;}
+        body:after {content:'';background-repeat:no-repeat;background-size:cover;-webkit-filter:blur(3px);-moz-filter:blur(3px);-o-filter:blur(3px);-ms-filter:blur(3px);filter:blur(3px);position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;}
+        .layui-container {width: 100%;height: 100%;overflow: hidden}
+        .admin-login-background {width:600px;height:400px;position:absolute;left:40%;top:40%;margin-left:-120px;margin-top:-220px;}
+        {#.admin-login-background {width:800px;height:800px;position:absolute;left:40%;top:40%;margin-left:-200px;margin-top:-100px;}#}
+        .logo-title {text-align:center;letter-spacing:2px;padding:14px 0;}
+        .logo-title h1 {color:#009688;font-size:25px;font-weight:bold;}
+        .login-form {background-color:#fff;border:1px solid #fff;border-radius:3px;padding:14px 20px;box-shadow:0 0 8px #eeeeee;}
+        .login-form .layui-form-item {position:relative;}
+        .login-form .layui-form-item label {position:absolute;left:1px;top:1px;width:38px;line-height:36px;text-align:center;color:#d2d2d2;}
+        .login-form .layui-form-item input {padding-left:36px;}
+        .captcha {width:60%;display:inline-block;}
+        .captcha-img {display:inline-block;width:100px;float:right;}
+        .captcha-img img {height:36px;border:1px solid #e6e6e6;width:100%;}
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <div class="admin-login-background">
+        <div class="layui-form login-form">
+            <iframe src="" frameborder="0" id="iframeContentId" name="iframeContent" style="display: none;"></iframe>
+            <form class="layui-form layui-form-pane" action="/user/registersubmit/" target="iframeContent" method="post">
+{#            <form class="layui-form layui-form-pane" action="/user/registersubmit/" method="post" id="formsubmit" onsubmit="func()">#}
+                <div class="layui-form-item logo-title" >
+                    <h1>用户注册</h1>
+                </div>
+
+
+                {#                <div class="layui-inline">#}
+                {#                    <label class="layui-form-label" style="width: 100px">地址描述</label>#}
+                {#                    <div class="layui-input-inline" style="width: 150px">#}
+                {#                        <input type="text" id="addressCommentId" name="addressComment" autocomplete="off" class="layui-input">#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 120px">用户名</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-username" for="username"></label>
+                            <input type="text" name="username" id="usernameId" lay-verify="required|account" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="test">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 120px">手机号</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-username" for="username"></label>
+                            <input type="text" name="phone" id="phoneId" lay-verify="required|account" placeholder="请输入手机号" autocomplete="off" class="layui-input" value="132000001111">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 120px">申请权限</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-username" for="username"></label>
+                            <div class="layui-input-inline" style="width: 430px">
+                                <select name="selecter" id="selecterId">
+                                    <option value="">请选择申请权限</option>
+                                    {#                                    <option value="超级管理员" selected="">超级管理员</option>#}
+                                    <option value="业务负责人">业务负责人</option>
+                                    <option value="安全管理员">安全管理员</option>
+                                    <option value="网络管理员">网络管理员</option>
+                                    <option value="运维管理员">运维管理员</option>
+                                    <option value="研发管理员">研发管理员</option>
+                                </select>
+                            </div>
+                            {#                            <input type="text" name="username" lay-verify="required|account" placeholder="用户名" autocomplete="off" class="layui-input" value="申请权限">#}
+                        </div>
+                    </div>
+                </div>
+                {#                <div class="layui-inline">#}
+                {##}
+                {#                    <label class="layui-form-label" style="width: 100px">邮箱</label>#}
+                {##}
+                {#                    <div class="layui-input-inline" style="width: 450px">#}
+                {#                        <div class="layui-form-item">#}
+                {#                            <label class="layui-icon layui-icon-username" for="username"></label>#}
+                {#                            <input type="text" name="username" lay-verify="required|account" placeholder="用户名" autocomplete="off" class="layui-input" value="请输入用户名">#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="layui-inline">
+
+                    <label class="layui-form-label" style="width: 120px">密码</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-username" for="username"></label>
+                            <input type="password" name="password" id="passwordId" lay-verify="required|password" placeholder="请输入密码" autocomplete="off" class="layui-input" value="qwe123!@#">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+
+                    <label class="layui-form-label" style="width: 120px">确认密码</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-username" for="username"></label>
+                            <input type="password" name="repassword" id="repasswordId" lay-verify="required|password" placeholder="请再次输入" autocomplete="off" class="layui-input" value="qwe123!@#">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-inline">
+
+                    <label class="layui-form-label" style="width: 120px">图形验证码</label>
+
+                    <div class="layui-input-inline" style="width: 430px">
+                        <div class="layui-form-item">
+                            <label class="layui-icon layui-icon-vercode" for="captcha"></label>
+                            <input type="text" name="captcha" id="captchaId" lay-verify="required|captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input verification captcha" value="captcha">
+                            <div class="captcha-img">
+                                <img id="captchaPic" src="/static/images/captcha.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="registerFilter">提  交</button>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-col-xs6">
+                            <span><a href="/user/login/" style="color:#009688">已有账号？立即登录</a></span>
+                        </div>
+                        <div class="layui-col-xs6" align='right'>
+                            <span><a>忘记密码？请联系管理员</a></span>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/static/lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="/static/lib/jq-module/jquery.particleground.min.js" charset="utf-8"></script>
+<script>
+    layui.use(['form'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer;
+
+
+        // 登录过期的时候，跳出ifram框架
+        if (top.location != self.location) top.location = self.location;
+
+        // 粒子线条背景
+        $(document).ready(function(){
+            $('.layui-container').particleground({
+                dotColor:'#5cbdaa',
+                lineColor:'#5cbdaa'
+            });
+        });
+
+
+        // 监听注册操作
+        form.on('submit(registerFilter)', function (data) {
+            data = data.field;
+            if (data.username == '') {
+                layer.msg('用户名不能为空');
+                return false;
+            }
+            if (data.phone == '') {
+                layer.msg('手机号不能为空');
+                return false;
+            }
+            if (data.password == '') {
+                layer.msg('密码不能为空');
+                return false;
+            }
+            if (data.repassword == '') {
+                layer.msg('密码不能为空');
+                return false;
+            }
+            if (data.selecter == '') {
+                layer.msg('权限选择不能为空');
+                return false;
+            }
+            if (data.captcha == '') {
+                layer.msg('验证码不能为空');
+                return false;
+            }
+
+            {#return false;#}
+
+        });
+
+
+
+
+    });
+
+    $("iframe[name=iframeContent]").on("load", function() {
+        {#iframeContentId#}
+        {#layer.alert($("#iframeContentId").contents().find("#"));#}
+        {#layer.alert(document.querySelector('#iframe_id').contentWindow.document.querySelector('#ele_id'));#}
+
+        var responseText = $("#iframeContentId")[0].contentDocument.body.getElementsByTagName("span")[0].innerHTML;
+        {#var responseText = $("#iframeContentId").contentDocument.body.getElementsByTagName("span")[0].innerHTML;#}
+        {#layer.alert(unescape(responseText));#}
+        responseText = unescape(responseText.replace(/\\u/g, "%u").replace("\"", "").replace("\"", "")); // "我是unicode编码"
+        layer.alert(responseText);
+
+        //以下就可以判断并处理返回值
+    })
+
+
+    function func(){
+        layer.alert("424561561");
+
+    };
+
+
+</script>
+</body>
+</html>

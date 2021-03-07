@@ -1,0 +1,693 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        </br>
+
+{#                <fieldset class="layui-elem-field layuimini-search">#}
+{#                    <legend>搜索信息</legend>#}
+{#                    <div style="margin: 10px 10px 10px 10px">#}
+{#                        <form class="layui-form layui-form-pane" action="">#}
+{#                            <div class="layui-form-item">#}
+{#                                <div class="layui-inline">#}
+{#                                    <label class="layui-form-label" style="width: 90px">部门</label>#}
+{#                                    <div class="layui-input-inline" style="width: 110px">#}
+{#                                        <input type="text" id="departmentNameId" name="departmentName" autocomplete="off" class="layui-input">#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="layui-inline">#}
+{#                                    <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </fieldset>#}
+
+        {#        </br>#}
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>新增漏洞</legend>
+            </br>
+
+            <form class="layui-form  layui-input-block" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="addVulnFormId">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label ">通知单名称</label>
+                    <div class="layui-input-inline" style=" width: 990px">
+                        <input type="text" name="vulnNoticeFileName" id="vulnNoticeFileNameId" lay-verify="title" autocomplete="off" placeholder="管理平台未授权访问漏洞" class="layui-input">
+
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">通知单编号<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style=" width: 240px">
+                            <input type="number" name="vulnNoticeFileId" id="vulnNoticeFileIdId" lay-verify="required" autocomplete="off" placeholder="2020001" class="layui-input">
+
+                        </div>
+                    </div>
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label ">通知单类型</label>#}
+{#                        <div class="layui-input-inline"  style=" width: 240px">#}
+{#                            <select name="vulnNoticeFileType" id="vulnNoticeFileTypeId"  lay-search="">#}
+{#                                <option value="">请选择通知单类型</option>#}
+{#                                <option value="漏洞通知单">漏洞通知单</option>#}
+{#                                <option value="督查通知单">督查通知单</option>#}
+{##}
+{##}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">漏洞级别<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style=" width: 240px">
+                            <input type="text" name="vulnLevel" id="vulnLevelId" lay-verify="required" autocomplete="off" placeholder="1个中危，一个低危" class="layui-input">
+
+                        </div>
+                    </div>
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label ">漏洞级别</label>#}
+{#                        <div class="layui-input-inline" style=" width: 240px">#}
+{#                            <select name="vulnLevel" id="vulnLevelId" lay-search="">#}
+{#                                <option value="">请选择漏洞级别</option>#}
+{#                                <option value="高危">高危</option>#}
+{#                                <option value="中危">中危</option>#}
+{#                                <option value="低危">低危</option>#}
+{#                                <option value="风险">风险</option>#}
+{##}
+{##}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+                </div>
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞域名<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style=" width: 240px">
+                            <input type="text" name="vulnDomain" id="vulnDomainId" lay-verify="required" autocomplete="off" placeholder="漏洞域名" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞个数<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style=" width: 240px">
+                            <input type="number" name="vulnCount" id="vulnCountId" lay-verify="required" autocomplete="off" placeholder="漏洞个数" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">测试人员<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style=" width: 240px">
+                            <input type="text" name="vulnTestName" id="vulnTestNameId" lay-verify="required" autocomplete="off" placeholder="测试人员" class="layui-input">
+
+                        </div>
+                    </div>
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label ">特殊时期</label>#}
+{#                        <div class="layui-input-inline"  style="width: 240px">#}
+{#                            <select name="vulnSpecialTime" id="vulnSpecialTimeId" lay-search="">#}
+{#                                <option value="">请选择测试时期</option>#}
+{#                                <option value="春节保障">春节保障</option>#}
+{#                                <option value="一带一路">一带一路</option>#}
+{#                                <option value="两会保障">两会保障</option>#}
+{#                                <option value="护网行动">护网行动</option>#}
+{#                                <option value="国庆保障">国庆保障</option>#}
+{#                                <option value="元旦保障">元旦保障</option>#}
+{#                                <option value="其他">其他</option>#}
+{##}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+                </div>
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞类型</label>
+                        <div class="layui-input-inline" style="width: 990px">
+                            <input type="text" name="vulnType" id="vulnTypeId" lay-verify="required" autocomplete="off" placeholder="漏洞类型" class="layui-input">
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline  ">
+                        <label class="layui-form-label">是否通知</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="vulnIsNotice" id="vulnIsNoticeId" lay-skin="switch" lay-filter="vulnIsNoticeFilter" lay-text="已通知|未通知">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">是否反馈</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsFeedback" id="vulnIsFeedbackId" lay-skin="switch" lay-filter="vulnIsFeedbackIdFilter" lay-text="已反馈|未反馈">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">是否复测</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsRetest" id="vulnIsRetestId" lay-skin="switch" lay-filter="vulnIsRetestIdFilter" lay-text="已复测|未复测">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否修复</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsEepair" id="vulnIsEepairId" lay-skin="switch" lay-filter="vulnIsEepairIdFilter" lay-text="已修复|未修复">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+{#                <div class="layui-form-item " pane="">#}
+{#                    <label class="layui-form-label">漏洞类型</label>#}
+{#                    <div class="layui-input-block" name="vulnType" id="vulnTypeId" style="width: 80%">#}
+{#                        <input type="checkbox" name="用户名遍历漏洞" lay-skin="primary" title="用户名遍历&#8195">#}
+{#                        <input type="checkbox" name="密码暴力猜解漏洞" lay-skin="primary" title="密码暴力猜解">#}
+{#                        <input type="checkbox" name="MD5弱加密漏洞" lay-skin="primary" title="弱加密&#8195&#8195&#8195">#}
+{#                        <input type="checkbox" name="登录弱口令漏洞" lay-skin="primary" title="登录弱口令&#8195">#}
+{#                        <input type="checkbox" name="图片验证码漏洞" lay-skin="primary" title="图片验证码&#8195">#}
+{#                        <input type="checkbox" name="短信炸弹漏洞" lay-skin="primary" title="短信炸弹&#8195&#8195">#}
+{#                        <input type="checkbox" name="其他登录问题漏洞" lay-skin="primary" title="其他登录问题">#}
+{#                        <input type="checkbox" name="任意文件上传漏洞" lay-skin="primary" title="任意文件上传">#}
+{#                        <input type="checkbox" name="sql注入漏洞" lay-skin="primary" title="SQL注入&#8195&#8194&nbsp;&nbsp;">#}
+{#                        <input type="checkbox" name="跨站脚本攻击漏洞" lay-skin="primary" title="跨站脚本攻击">#}
+{#                        <input type="checkbox" name="跨站请求伪造漏洞" lay-skin="primary" title="跨站请求伪造">#}
+{#                        <input type="checkbox" name="远程命令执行漏洞" lay-skin="primary" title="远程命令执行">#}
+{#                        <input type="checkbox" name="中间件漏洞" lay-skin="primary" title="中间件漏洞&#8195">#}
+{#                        <input type="checkbox" name="目录遍历漏洞" lay-skin="primary" title="目录遍历漏洞">#}
+{#                        <input type="checkbox" name="URL跳转漏洞" lay-skin="primary" title="URL跳转&#8195&#8195">#}
+{#                        <input type="checkbox" name="敏感信息泄露漏洞" lay-skin="primary" title="敏感信息泄露">#}
+{#                        <input type="checkbox" name="私搭乱建漏洞" lay-skin="primary" title="私搭乱建&#8195&#8195">#}
+{#                        <input type="checkbox" name="源代码泄露漏洞" lay-skin="primary" title="源代码泄露&#8195">#}
+{#                        <input type="checkbox" name="未授权访问漏洞" lay-skin="primary" title="未授权访问&#8195">#}
+{#                        <input type="checkbox" name="越权逻辑漏洞" lay-skin="primary" title="越权逻辑漏洞">#}
+{#                        <input type="checkbox" name="支付逻辑漏洞" lay-skin="primary" title="支付逻辑漏洞">#}
+{#                        <input type="checkbox" name="其他逻辑漏洞" lay-skin="primary" title="其他逻辑漏洞">#}
+{#                        <input type="checkbox" name="其他漏洞" lay-skin="primary" title="其他漏洞&#8195&#8195">#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+
+                </br>
+
+
+{#                <div class="layui-form-item">#}
+{#                    <label class="layui-form-label">漏洞名称</label>#}
+{#                    <div class="layui-input-block">#}
+{#                        <input type="text" name="vulnName" id="vulnNameId" lay-verify="required" lay-reqtext="系统名称是必填项，不能为空" placeholder="系统名称" autocomplete="off" class="layui-input">#}
+{#                    </div>#}
+{#                </div>#}
+
+
+{#                <div class="layui-form-item">#}
+{##}
+{#                    <label class="layui-form-label">资料上传</label>#}
+{##}
+{#                    <div class=" layui-upload" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectWordVulnNoticeFile" id="selectWordVulnNoticeFileId">选择word通知单</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadWordVulnNoticeFile" id="startUploadWordVulnNoticeFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{#                    <div class=" layui-upload layui-input-block" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectVulnNoticeFile" id="selectPdfVulnNoticeFileId">选择pdf通知单</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnNoticeFile" id="startUploadPdfVulnNoticeFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{#                    <div class=" layui-upload layui-input-block" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectVulnFeedbackFile" id="selectVulnFeedbackFileId">选择反馈单</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnFeedbackFile" id="startUploadVulnFeedbackFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{#                    <div class=" layui-upload layui-input-block" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectVulnRetestFile" id="selectVulnRetestFileId">选择复测报告</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnRetestFile" id="startUploadVulnRetestFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{##}
+{#                </div>#}
+
+
+
+                <div class="layui-form-item layui-form-text ">
+                    <label class="layui-form-label">漏洞描述</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="vulnDetail" id="vulnDetailId" placeholder="漏洞描述" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-form-item " style="text-align:center">
+                    <div class="layui-input-block ">
+                        <button class="layui-btn" id="addVulnSubmitId" type="button" style="margin-right: 150px" lay-submit lay-filter="addVulnSubmitFilter">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+{#                        <a class="layui-btn" id="addVulnCancleId" type="button" style="margin-right: 300px" lay-submit lay-filter="addVulnCancleFilter">立即提交</a>#}
+{#                        <button class="layui-btn" id="addVulnSubmitId" type="button" style="margin-right: 150px" lay-submit lay-filter="addVulnSubmitFilter">立即提交</button>#}
+{#                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>#}
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+
+
+        <!-- 示例-970 -->
+        {#        <ins class="adsbygoogle" style="width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layer', 'table', 'upload', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            layer = layui.layer;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+
+        //下发通知单开关
+        form.on('switch(vulnIsNoticeFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已下发整改通知单' : '未下发整改通知单'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已下发整改通知单', data.othis)
+            }else{
+                layer.tips('未下发整改通知单', data.othis)
+
+            }
+        });
+
+        //收到反馈开关
+        form.on('switch(vulnIsFeedbackIdFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已收到整改反馈单' : '未收到整改反馈单'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已收到整改反馈单', data.othis)
+            }else{
+                layer.tips('未收到整改反馈单', data.othis)
+
+            }
+        });
+
+        //是否复测开关
+        form.on('switch(vulnIsRetestIdFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已完成复测并有复测报告' : '未完成复测'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已完成复测并有复测报告', data.othis)
+            }else{
+                layer.tips('未完成复测', data.othis)
+
+            }
+        });
+
+        //是否修复开关
+        form.on('switch(vulnIsEepairIdFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '该漏洞已完成修复' : '该漏洞未完成修复'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('该漏洞已完成修复', data.othis)
+            }else{
+                layer.tips('该漏洞未完成修复', data.othis)
+
+            }
+        });
+
+
+
+
+        // 监听添加漏洞提交
+        form.on('submit(addVulnSubmitFilter)', function (data) {
+
+            {#//获取checkbox[name='like1']的值#}
+            {#var arr = new Array();#}
+            {#$("input:checkbox[name='vulnName']:checked").each(function(i){#}
+            {#    arr[i] = $(this).val(); });#}
+            {#data.field.like = arr.join(",");//将数组合并成字符串#}
+
+
+            $.ajax({
+                url: '/VulnManage/addVulnsubmit/',
+                type: 'post'
+                ,dataType: 'json' //预期返回类型
+                ,data: data.field,
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("添加成功",{
+                            icon:1,
+                            title:'提示'
+                            ,yes:function (data) {
+                                window.parent.location.reload(); //刷新父页面
+
+                            }
+                        },function(index){
+                            layer.close(index);
+                            {#window.location = ("/#/VulnManage/vulnlist/");#}
+
+                        });
+                    }else{
+                        layer.alert(data,{
+                            icon:2
+                            ,title:'提示'
+
+                        },function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+
+            return false;
+        });
+
+
+
+
+
+
+        //上传 word 的漏洞整改通知单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectWordVulnNoticeFileId'
+            ,dragDrop: true                 // 是否可以拖动上传文件
+            {#,url: 'VulnManage/uploadWordVulnNoticeFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadWordVulnNoticeFileId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadWordVulnNoticeFileId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadWordVulnNoticeFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //上传 PDF 的漏洞整改通知单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectPdfVulnNoticeFileId'
+            {#,url: 'VulnManage/uploadWordVulnNoticeFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadPdfVulnNoticeFileId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            {#,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"#}
+            ,acceptMime:"application/pdf"
+            ,exts: 'pdf'        //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadPdfVulnNoticeFileId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadPdfVulnNoticeFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+
+        //上传 word | PDF 的反馈单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectVulnFeedbackFileId'
+            {#,url: 'VulnManage/uploadVulnFeedbackFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadVulnFeedbackFileId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,.pdf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx|pdf'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadVulnFeedbackFileId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadVulnFeedbackFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //上传 word 的复测报告,选完文件后不自动上传
+        upload.render({
+            elem: '#selectVulnRetestFileId'
+            {#,url: 'VulnManage/uploadVulnRetestFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            {##}
+            {#//,multiple: true       //是否允许多文件上传#}
+            {#,bindAction: '#startUploadVulnRetestFileId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadVulnRetestFileId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadVulnRetestFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        {#//表单初始赋值#}
+        form.val('myFormFilter', {
+            "vulnNoticeFileId": "2020086"
+            {#, "vulnNoticeFileName": "IE浏览器远程代码执行漏洞(CVE-2020-0674)"#}
+            {#, "vulnSpecialTime": "春节保障"#}
+            {#, "vulnNoticeFileType": "漏洞通知单"#}
+            {#, "vulnDomain": "adm.baidu.com"#}
+            {#, "vulnLevel": "高危"#}
+            , "vulnCount": "1"
+            , "vulnTestName": "陈广源"
+            {#, "vulnType": "未授权"#}
+            , "vulnIsNotice": true
+            {#, "vulnIsFeedback": false#}
+            {#, "vulnIsRetest": false#}
+            {#, "vulnIsEepair": false#}
+
+
+
+
+
+
+            {#, "用户名遍历漏洞": true#}
+            {#, "支付逻辑漏洞": true#}
+            {#, "任意文件上传漏洞": true#}
+        });
+
+
+
+
+
+
+    });
+
+
+
+    {#window.onload = function () {#}
+    {#    var submit = document.getElementById("adddomainSubmitId");#}
+    {#    submit.onclick = function(event){#}
+    {#        alert("不提交");#}
+    {#        return false;#}
+    {#    };    }#}
+
+
+
+</script>

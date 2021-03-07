@@ -1,0 +1,19 @@
+#! /usr/bin/env python
+# -*- coding:utf-8 -*-
+'''
+@Author:Sunqh
+@FileName: *.py
+@Version:1.0.0
+
+'''
+import mitmproxy.http
+from mitmproxy import ctx
+
+
+class Counter:
+    def __init__(self):
+        self.num = 0
+
+    def request(self, flow: mitmproxy.http.HTTPFlow):
+        self.num = self.num + 1
+        ctx.log.info("We've seen %d flows" % self.num)

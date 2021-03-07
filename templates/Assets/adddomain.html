@@ -1,0 +1,403 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        </br>
+
+        {#        <fieldset class="layui-elem-field layuimini-search">#}
+        {#            <legend>搜索信息</legend>#}
+        {#            <div style="margin: 10px 10px 10px 10px">#}
+        {#                <form class="layui-form layui-form-pane" action="">#}
+        {#                    <div class="layui-form-item">#}
+        {#                        <div class="layui-inline">#}
+        {#                            <label class="layui-form-label" style="width: 90px">部门</label>#}
+        {#                            <div class="layui-input-inline" style="width: 110px">#}
+        {#                                <input type="text" id="departmentNameId" name="departmentName" autocomplete="off" class="layui-input">#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                        #}
+        {#                        <div class="layui-inline">#}
+        {#                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </form>#}
+        {#            </div>#}
+        {#        </fieldset>#}
+
+        </br>
+        </br>
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend >新增资产</legend>
+            </br>
+            <form class="layui-form  layui-input-block" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="myFormId">
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">部门名称</label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <select name="departmentName" id="departmentNameId" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="平台中心研发">平台中心研发</option>
+                                <option value="平台中心安全">平台中心安全</option>
+                                <option value="平台中心运维">平台中心运维</option>
+                                <option value="充电出行事业部">充电出行事业部</option>
+                                <option value="能源事业部">能源事业部</option>
+                                <option value="运营监控中心">运营监控中心</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统类型</label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <select name="systemType" id="systemTypeId" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="管理平台">管理平台</option>
+                                <option value="商户平台">商户平台</option>
+                                <option value="企业用户网站">企业用户网站</option>
+                                <option value="APP应用系统">APP应用系统</option>
+                                <option value="Web页面登录">Web页面登录</option>
+                                <option value="公众号小程序">公众号小程序</option>
+                                <option value="接口调用">接口调用</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">系统名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="systemName" id="systemNameId" lay-verify="required" lay-reqtext="系统名称是必填项，不能为空" placeholder="系统名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">域名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="domainName" id="domainNameId" lay-verify="required" lay-reqtext="域名是必填项，不能为空" placeholder="域名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">SLB地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="SLBIP" id="SLBIPId" lay-verify="required" lay-reqtext="SLB地址是必填项，不能为空" placeholder="SLB地址" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">SLB端口</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="SLBPort" id="SLBPortId" lay-verify="required" lay-reqtext="SLB端口是必填项，不能为空" placeholder="SLB端口" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                {#                <div class="layui-form-item">#}
+                {#                    <label class="layui-form-label">开发单位</label>#}
+                {#                    <div class="layui-input-block">#}
+                {#                        <input type="text" name="developmentCompany" id="developmentCompanyId" lay-verify="required" lay-reqtext="用户名是必填项，不能为空" placeholder="请输入" autocomplete="off" class="layui-input">#}
+                {#                    </div>#}
+                {#                </div>#}
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">访问URL</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="accessURL" id="accessURLId" lay-verify="title" autocomplete="off" placeholder="访问URL" class="layui-input">
+                    </div>
+                </div>
+                {#                <div class="layui-form-item">#}
+                {#                    <label class="layui-form-label">开发单位</label>#}
+                {#                    <div class="layui-input-block">#}
+                {#                        <input type="text" name="developmentCompany" id="developmentCompanyId" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开发单位</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentCompany" id="developmentCompanyId" lay-verify="title" autocomplete="off" placeholder="开发单位" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务联系人</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="businessPeople" id="businessPeopleId" lay-verify="title" autocomplete="off" placeholder="业务联系人" class="layui-input">
+
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="businessPhone" id="businessPhoneId" lay-verify="title" autocomplete="off" placeholder="业务电话" class="layui-input">
+
+                        </div>
+
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">项目经理</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="projectPeopleName" id="projectPeopleNameId" lay-verify="title" autocomplete="off" placeholder="项目经理" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">经理电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="projectPeoplePhone" id="projectPeoplePhoneId" lay-verify="title" autocomplete="off" placeholder="经理电话" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">研发人员</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="DevelopPeople" id="DevelopPeopleId" lay-verify="title" autocomplete="off" placeholder="项目经理" class="layui-input">
+
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">研发电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="DevelopPhone" id="DevelopPhoneId" lay-verify="title" autocomplete="off" placeholder="经理电话" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemUsername" id="systemUsernameId" lay-verify="pass" placeholder="用户名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemPassword" id="systemPasswordId" lay-verify="pass" placeholder="密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统状态</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="systemStatus" id="systemStatusId" lay-skin="switch" lay-filter="systemStatusFilter" lay-text="使用中|已下线">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">外网访问</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="extranetAccess" id="extranetAccessId" lay-skin="switch" lay-filter="extranetAccessFilter" lay-text="开放访问|本地访问">
+                        </div>
+                    </div>
+
+
+                </div>
+
+{#                <div class="layui-form-item">#}
+{#                    <label class="layui-form-label">ECS地址</label>#}
+{#                    <div class="layui-input-block">#}
+{#                        <input type="text" name="ECSIP" id="ECSIPId" placeholder="ECS地址" autocomplete="off" class="layui-input">#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">中间件</label>
+                    <div class="layui-input-block">
+{#                        <textarea placeholder="请输入内容" name="systemMiddleware" id="systemMiddlewareId" placeholder="描述信息" class="layui-textarea"></textarea>#}
+                        <input type="text" name="systemMiddleware" id="systemMiddlewareId" lay-verify="title" autocomplete="off" placeholder="中间件" class="layui-input">
+
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">系统描述</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="systemDescribe" id="systemDescribeId" placeholder="描述信息" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="systemCommon" id="systemCommonId" placeholder="描述信息" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item " style="text-align:center">
+                    <div class="layui-input-block ">
+                        {#                        <button type="button" class="layui-btn" onclick="adddomainmsg()" lay-filter="adddomain-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        {#                        <button class="layui-btn" lay-filter="adddomain-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        <button class="layui-btn" id="adddomainSubmitId" type="button" style="margin-right: 150px">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+
+
+        <!-- 示例-970 -->
+        {#        <ins class="adsbygoogle" style="width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery
+            , form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        {#var editIndex = layedit.build('LAY_demo_editor');#}
+
+        {#//自定义验证规则#}
+        {#form.verify({#}
+        {#    required: function (value) {#}
+        {#        if (value.length < 5) {#}
+        {#            return '标题至少得5个字符啊'; }}#}
+        {#    , pass: [#}
+        {#        /^[\S]{6,12}$/#}
+        {#        , '密码必须6到12位，且不能出现空格' ]#}
+        {#    , title: function (value) {#}
+        {#        layedit.sync(editIndex);}});#}
+
+        //系统状态开关
+        form.on('switch(systemStatusFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '该域名有效' : '该域名已下线'), {
+                offset: '6px'});
+            if(this.checked){
+                layer.tips('该域名有效', data.othis)
+            }else{
+                layer.tips('该域名已下线', data.othis)
+
+            }
+        });
+
+
+        //外网访问开关
+        form.on('switch(extranetAccessFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '开放互联网访问' : '仅本地访问'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('开放互联网访问', data.othis)
+            }else{
+                layer.tips('仅广安、人济等本地访问', data.othis)
+            }
+
+        });
+
+
+        //监听提交
+        $("#adddomainSubmitId").on("click", function () {
+
+            {#layer.alert("123156");#}
+            $.ajax({
+                url: '/Assets/addDomainsubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    departmentName: $('#departmentNameId').val(),
+                    systemType: $('#systemTypeId').val(),
+                    systemName: $('#systemNameId').val(),
+                    domainName: $('#domainNameId').val(),
+                    SLBIP: $('#SLBIPId').val(),
+                    ECSIP: $('#ECSIPId').val(),
+                    SLBPort: $('#SLBPortId').val(),
+                    accessURL: $('#accessURLId').val(),
+                    developmentCompany: $('#developmentCompanyId').val(),
+                    businessPeople: $('#businessPeopleId').val(),
+                    businessPhone: $('#businessPhoneId').val(),
+                    DevelopPeople: $('#DevelopPeopleId').val(),
+                    DevelopPhone: $('#DevelopPhoneId').val(),
+                    systemUsername: $('#systemUsernameId').val(),
+                    systemPassword: $('#systemPasswordId').val(),
+                    projectPeopleName: $('#projectPeopleNameId').val(),
+                    projectPeoplePhone: $('#projectPeoplePhoneId').val(),
+                    systemMiddleware: $('#systemMiddlewareId').val(),
+                    systemCommon: $('#systemCommonId').val(),
+
+
+                    {#systemStatus: $('#systemStatusId').val(),#}
+                    {#extranetAccess: $('#extranetAccessId').val(),#}
+                    systemDescribe: $('#systemDescribeId').val(),
+
+                    systemStatus: $("#systemStatusId").is(':checked'),
+                    extranetAccess: $("#extranetAccessId").is(':checked'),
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("添加成功",{ icon:1,title:'提示'},function(index){
+                            layer.close(index);
+                            {#window.parent.location.reload(); //刷新父页面#}
+
+                            window.location = ("/#/Assets/domain/");
+
+                        });
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+
+            return false;
+        });
+
+        {#//表单初始赋值#}
+        {#form.val('myFormFilter', {#}
+        {#    "departmentName": "运营与监控中心" // "name": "value"#}
+        {#    , "systemName": "测试系统"#}
+        {#    , "domainName": "www.test.com"#}
+        {#    , "SLBIP": "127.0.0.1"#}
+        {#    , "SLBPort": "8080"#}
+        {#    , "systemType": "APP应用系统"#}
+        {#    , "systemStatus": true#}
+        {#    , "accessURL": "url" //复选框选中状态#}
+        {#    , "developmentCompany": "科东"#}
+        {#    , "extranetAccess": true#}
+        {#    , "businessPeople": "businessPeople"#}
+        {#    , "businessPhone": "businessPhone"#}
+        {#    , "DevelopPeople": "DevelopPeople"#}
+        {#    , "DevelopPhone": "DevelopPhone"#}
+        {#    , "systemDescribe": "systemDescribe"#}
+        {#    , "systemUsername": "systemUsername"#}
+        {#    , "systemPassword": "systemPassword"})#}
+    });
+
+
+
+    {#window.onload = function () {#}
+    {#    var submit = document.getElementById("adddomainSubmitId");#}
+    {#    submit.onclick = function(event){#}
+    {#        alert("不提交");#}
+    {#        return false;#}
+    {#    };    }#}
+
+
+
+</script>

@@ -1,0 +1,1208 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">系统名称</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="systemNameId" name="systemName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">公司名称</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <select name="companyName" id="companyNameId" lay-title="required" lay-search="">
+                                    <option value="">直接选择或搜索选择</option>
+                                    <option value="上海">上海</option>
+                                    <option value="湖南">湖南</option>
+                                    <option value="河北">河北</option>
+                                    <option value="湖北">湖北</option>
+                                    <option value="陕西">陕西</option>
+                                    <option value="重庆">重庆</option>
+                                    <option value="山东">山东</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">域名</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="domainId" name="domain" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">IP</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="IPId" name="IP" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+{#                        <div class="layui-inline">#}
+{#                            <label class="layui-form-label" style="width: 90px">系统类型</label>#}
+{#                            <div class="layui-input-inline" style="width: 150px">#}
+{#                                <input type="text" id="systemTypeId" name="systemType" autocomplete="off" class="layui-input">#}
+{#                            </div>#}
+{#                        </div>#}
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">系统类型</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <select name="systemType" id="systemTypeId"  autocomplete="off"  lay-search="">
+                                    <option value="">直接选择或搜索选择</option>
+                                    <option value="APP应用系统">APP应用系统</option>
+                                    <option value="Web页面登录">Web页面登录</option>
+                                    <option value="公众号小程序">公众号小程序</option>
+                                    <option value="接口调用">接口调用</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" id="searchCopartnershipId" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+    </div>
+</div>
+
+
+
+{#添加按钮弹窗#}
+<div class="site-text" style="width:1000px; height:600px; margin: 30px 20px 30px 20px;  overflow:auto; display: none" id="addCopartnershipOpenFormId"  target="test123">
+
+    <form class="layui-form" id="myFormId" method="post" lay-filter="myFormFilter">
+
+
+
+
+
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">公司名称<span style="color: #FF0000; ">*</span></label>
+                <div class="layui-input-inline">
+                    <select name="departmentName" id="departmentNameOpenId" lay-verify="required" lay-search="">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="上海">上海</option>
+                        <option value="湖南">湖南</option>
+                        <option value="河北">河北</option>
+                        <option value="湖北">湖北</option>
+                        <option value="陕西">陕西</option>
+                        <option value="重庆">重庆</option>
+                        <option value="山东">山东</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">系统名称<span style="color: #FF0000; ">*</span></label>
+                <div class="layui-input-inline">
+                    <input type="text" name="systemName" id="systemNameOpenId" lay-verify="required" lay-reqtext="系统名称是必填项，不能为空" placeholder="系统名称" autocomplete="off" class="layui-input" readonly>                    </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">系统类型</label>
+                <div class="layui-input-inline">
+                    <select name="systemType" id="systemTypeOpenId" lay-verify="required" lay-search="">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="APP应用系统">APP应用系统</option>
+                        <option value="Web页面登录">Web页面登录</option>
+                        <option value="公众号小程序">公众号小程序</option>
+                        <option value="接口调用">接口调用</option>
+
+                    </select>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" >IP</label>
+                <div class="layui-input-inline" >
+                    <input type="text" name="IP" id="IPOpenId" lay-verify="pass" placeholder="IP" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">域名</label>
+                <div class="layui-input-inline" >
+                    <input type="text" name="domain" id="domainOpenId" lay-verify="pass" placeholder="域名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">端口及服务</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="portService" id="portServiceOpenId" lay-verify="pass" placeholder="端口及服务" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">访问URL</label>
+            <div class="layui-input-block" style="width: 835px">
+                <input type="text" name="accessURL" id="accessURLOpenId" lay-verify="pass"  autocomplete="off" placeholder="访问URL" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">敏感信息</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="information" id="informationOpenId" lay-verify="pass"  placeholder="敏感信息" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">安全人数</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="securityPeopleNum" id="securityPeopleNumOpenId" lay-verify="pass"  placeholder="安全人数" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">检查周期</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="testCycle" id="testCycleOpenId" lay-verify="pass"  placeholder="检查周期" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">用户规模</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="userSize" id="userSizeOpenId" lay-verify="pass"  placeholder="100万用户" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">系统规模</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="systemSize" id="systemSizeOpenId" lay-verify="pass"  placeholder="10台服务器" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">部署位置</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="deployPoint" id="deployPointOpenId" lay-verify="pass"  placeholder="阿里公有云" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="layui-form-item">
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">开发单位</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="developmentCompany" id="developmentCompanyOpenId" lay-verify="pass"  placeholder="开发单位" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">安全测评</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="securityTest" id="securityTestOpenId" lay-verify="pass"  placeholder="备案信息" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">测评结果</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="testResult" id="testResultOpenId" lay-verify="pass"  placeholder="无漏洞" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">业务联系人</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="businessPeople" id="businessPeopleOpenId" lay-verify="title" autocomplete="off" placeholder="业务联系人" class="layui-input">
+
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">业务电话</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="businessPhone" id="businessPhoneOpenId" lay-verify="title" autocomplete="off" placeholder="业务电话" class="layui-input">
+
+                </div>
+
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">项目经理</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="DevelopPeople" id="DevelopPeopleOpenId" lay-verify="title" autocomplete="off" placeholder="项目经理" class="layui-input">
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">部署时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="deployTime" id="deployTimeOpenId" lay-verify="pass"  placeholder="部署时间" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">防御能力</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="defensivePower" id="defensivePowerOpenId" lay-verify="pass"  placeholder="有IPS WAF" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">经理电话</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="DevelopPhone" id="DevelopPhoneOpenId" lay-verify="title" autocomplete="off" placeholder="经理电话" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="systemUsername" id="systemUsernameOpenId" lay-verify="pass" placeholder="用户名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="systemPassword" id="systemPasswordOpenId" lay-verify="pass" placeholder="密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">系统状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="systemStatus" id="systemStatusId" lay-skin="switch" lay-filter="systemStatusFilter" lay-text="使用中|已下线">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">外网访问</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="extranetAccess" id="extranetAccessId" lay-skin="switch" lay-filter="extranetAccessFilter" lay-text="开放访问|本地访问">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">是否脱敏</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="isdesensitization" id="isdesensitizationId" lay-skin="switch" lay-filter="isdesensitizationFilter" lay-text="已脱敏|未脱敏">
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">系统简介</label>
+            <div class="layui-input-block" style="width: 835px">
+                <textarea placeholder="请输入内容" name="systemDescribe" id="systemDescribeId" placeholder="描述信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block" style="width: 835px">
+                <textarea placeholder="请输入内容" name="systemCommon" id="systemCommonId" placeholder="描述信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {#        <div class="layui-form-item layui-form-text">#}
+{#            <label class="layui-form-label">编辑器</label>#}
+{#            <div class="layui-input-block">#}
+{#                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>#}
+{#            </div>#}
+{#        </div>#}
+
+
+
+
+        <div class="layui-form-item " style="text-align:center">
+            <div class="layui-input-block ">
+{#                <button type="button" class="layui-btn" onclick="addCopartnershipmsg()" lay-filter="addCopartnership-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+{#                <button class="layui-btn" lay-filter="addCopartnership-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+{#                <button class="layui-btn" type="button" id="addCopartnershipSubmitOpenFormId" lay-submit="" lay-filter="addCopartnership-btn-OpenForm-Filter" style="margin-right: 150px" onclick="addCopartnershipOpenFormSubmit()">立即提交</button>#}
+                <button class="layui-btn" type="button" id="addCopartnershipSubmitOpenFormId" lay-submit="" lay-filter="addCopartnership-btn-OpenForm-Filter" style="margin-right: 10px" >立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 10px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                <button type="button" class="layui-btn layui-btn-warm" id="addCopartnershipCancleId" lay-submit="" lay-filter="addCopartnershipCancleOpenForm-Filter"  style=" margin-right: 150px"> &nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp; </button>
+            </div>
+        </div>
+
+
+
+
+
+
+    </form>
+
+
+</div>
+
+
+
+
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm data-add-btn" href="javascript:;" data-content-href="Copartnership/addCopartnershippage/" data-title="基本资料" data-icon="fa fa-gears">
+            <i class="layui-icon">&#xe608;</i>
+            新增数据
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+
+{#        <button type="button" class="layui-btn layui-btn-sm data-download-btn layui-btn-normal" id="downloadCopartnershipTemplateFileId" name="downloadCopartnershipTemplateFile">#}
+            {#                    <a href="/Copartnership/downloadCopartnershipTemplateFile/" style="color: blue; font-size: 14px">#}
+{#            <a href="/Copartnership/downloadCopartnershipTemplateFile/" style="color: white; font-size: 12px">#}
+{#                <i class="layui-icon">&#xe601;</i>#}
+{#                下载模板#}
+{#            </a>#}
+{#        </button>#}
+{#        <button type="button" class="layui-btn layui-btn-sm" id="selectFileId" name="selectFile">选择文件（Copartnership.xls）</button>#}
+{#        <button type="button" class="layui-btn layui-btn-sm" id="startUploadId" name="startUpload">#}
+{#            <i class="layui-icon">&#xe681;</i>#}
+{#            开始上传#}
+{#        </button>#}
+{##}
+{#        <button class="layui-btn layui-btn-sm layui-btn-normal" href="javascript:;" data-title="初始化" data-icon="fa fa-gears" lay-event="initCopartnership">#}
+{#            <i class="layui-icon">&#xe639;</i>#}
+{#            初始化#}
+{#        </button>#}
+{##}
+{#        <button class="layui-btn layui-btn-sm data-delete-btn layui-btn-danger" lay-event="deleteAll">#}
+{#            <i class="layui-icon">&#xe640;</i>#}
+{#            全部删除#}
+{#        </button>#}
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="downloadAll">
+            <a href="/Copartnership/downloadCopartnershipAllToFile/" style="color: white; font-size: 12px">
+            <i class="layui-icon">&#xe641;</i>
+            批量下载
+        </button>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</script>
+
+
+
+<script>
+
+
+
+    layui.use(['form', 'layer', 'table', 'upload', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            layer = layui.layer;
+
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'Copartnership/getCopartnershiplist/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-tips'
+            }]
+            {#,initSort: {field:'cnvdNumber', type:'desc'}#}
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type: 'numbers', title: '序号', align:"center", sort: true,fixed: 'left',width:80,}
+
+
+                ,{field:'companyName', title:'公司名称', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemName', title:'系统名称  主键', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'IP', title:'IP地址', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'domain', title:'域名', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'portService', title:'端口及服务', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'information', title:'敏感信息', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'isdesensitization', title:'是否脱敏', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'securityPeopleNum', title:'安全人数', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'testCycle', title:'检查周期', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'userSize', title:'用户规模', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemSize', title:'系统规模', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'deployPoint', title:'部署位置', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'securityTest', title:'安全测评', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'testResult', title:'测评结果', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemType', title:'系统类型', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'defensivePower', title:'安全防御能力', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemStatus', title:'系统状态', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'accessURL', title:'访问URL', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'developmentCompany', title:'开发单位', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'extranetAccess', title:'外网访问', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'businessPeople', title:'业务联系人', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'businessPhone', title:'业务联系方式', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'DevelopPeople', title:'开发联系人', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'DevelopPhone', title:'开发联系方式', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemCommon', title:'备注', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemDescribe', title:'系统简介', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'deployTime', title:'部署时间', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'createTime', title:'创建时间', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'updateTime', title:'修改时间', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'createPeople', title:'创建人', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemUsername', title:'账号', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemPassword', title:'密码', width:160, align:'center', sort: true, totalRowText: 'text'}
+
+
+                ,{fixed:'right', title:'操作', width:200, align:'center', toolbar: '#optionToolbar',totalRow: true}
+
+            ]]
+            ,limits: [10, 20, 30, 50, 100]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,page: true
+            ,title: '省电动汽车公司资产表'
+
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+
+
+
+
+            var systemName = $('#systemNameId').val();
+            var companyName = $('#companyNameId').val();
+            var IP = $('#IPId').val();
+            var systemType = $('#systemTypeId').val();
+            var domain = $('#domainId').val();
+
+            table.reload('currentTableId', {
+                url: 'Copartnership/searchCopartnership/'
+                {#,methods:"post"#}
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    systemName : systemName
+                    ,companyName : companyName
+                    ,IP : IP
+                    ,systemType : systemType
+                    ,domain : domain
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            {#return false;#}
+        });
+
+
+
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#selectFileId'
+            ,url: 'Copartnership/uploadCopartnershipfile/'
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            ,bindAction: '#startUploadId'
+            ,accept: 'file' //允许上传的文件类型
+            {#,acceptMime: 'text/plain'#}
+            {#,ext: 'log|txt'#}
+            {#,acceptMime: 'text/*'#}
+            {#,size: 50 //最大允许上传的文件大小#}
+            {#,before:function(obj){#}
+            {#    obj.preview(function(index, file, result){#}
+            {#        alert(file.name);#}
+            {#    });#}
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+            }
+
+            ,done: function(res, index, upload){
+                if (res.code == 0){
+                    layer.closeAll('loading'); //关闭loading
+                    layer.alert("上传成功",{
+                        icon:1
+                        ,title:'提示'
+                    });
+                }
+            }
+        });
+
+
+
+
+
+
+        //头工具栏事件  未全选
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+                // 监听头工具删除操作  请确认是否全部删除
+                case 'deleteAll':
+                    layer.alert("请确认是否全部删除",{
+                        icon: 7
+                        ,title: '提示'
+                        ,btn: ['全部删除', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/Copartnership/deleteCopartnershipall/',{
+                                deleteAll: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('全部删除成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+
+
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                // 监听头工具初始化操作  请确认是否初始化
+                case 'initCopartnership':
+                    layer.alert("请确认是否初始化",{
+                        icon: 3
+                        ,title: '提示'
+                        ,btn: ['初始化', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/Copartnership/initCopartnership/',{
+                                init: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('初始化成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }else{
+                                    layer.alert(data,{
+                                        icon:2
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+
+
+        {#//监听表格复选框选择#}
+        {#table.on('checkbox(currentTableFilter)', function (obj) {#}
+        {#    console.log(obj)#}
+        {##}
+        {#table.on('tool(currentTableFilter)', function (obj) {#}
+        {#    var data = obj.data;#}
+        {#    if (obj.event === 'edit') {#}
+        {#        layer.alert('编辑行：<br>' + JSON.stringify(data))#}
+        {#    } else if (obj.event === 'delete') {#}
+        {#        layer.confirm('真的删除行么', function (index) {#}
+        {#            obj.del();#}
+        {#            layer.close(index);#}
+        {#        });#}
+        {#    }#}
+
+        //监听行工具事件  查看资产信息
+        table.on('tool(currentTableFilter)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据（json格式的键值对）
+                {#,layEvent = obj.event //获得 lay-event 对应的值（编辑、删除、添加）#}
+                ,editList=[]; //存放获取到的那条json数据中的value值（不放key）
+            $.each(
+                data,function(name,value) {//循环遍历json数据
+                    editList.push(value);
+                    //将json数据中的value放入数组中（下面的子窗口显示的时候要用到）
+                });
+
+            if(obj.event === 'detail'){
+                {#layer.msg('CopartnershipName：'+ data.CopartnershipName + ' 的查看操作');#}
+
+                layer.open({
+                    type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,scrollbar: true
+                    ,area: ['auto']
+                    ,maxHeight: "400px"
+                    ,closeBtn: 1 //显示关闭按钮
+                    ,title: ['查看资产信息','font-size:16px']
+                    {#,btn: ['关闭']#}
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    ,maxmin: true //允许全屏最小化
+                    ,content:$("#addCopartnershipOpenFormId")  //弹窗路径
+                    ,offset: "70px"
+
+
+                    ,success:function(layero){
+
+
+                        {#var btn = layero.find('.layui-layer-btn');#}
+                        {#btn.css('text-align', 'center');#}
+                        $('#companyNameOpenId').val(data.companyName);
+                        $('#systemNameOpenId').val(data.systemName);
+                        $('#IPOpenId').val(data.IP);
+                        $('#domainOpenId').val(data.domain);
+                        $('#portServiceOpenId').val(data.portService);
+                        $('#informationOpenId').val(data.information);
+                        $('#securityPeopleNumOpenId').val(data.securityPeopleNum);
+                        $('#testCycleOpenId').val(data.testCycle);
+                        $('#userSizeOpenId').val(data.userSize);
+                        $('#systemSizeOpenId').val(data.systemSize);
+                        $('#deployPointOpenId').val(data.deployPoint);
+                        $('#securityTestOpenId').val(data.securityTest);
+                        $('#testResultOpenId').val(data.testResult);
+                        $('#systemTypeOpenId').val(data.systemType);
+                        $('#defensivePowerOpenId').val(data.defensivePower);
+                        $('#accessURLOpenId').val(data.accessURL);
+                        $('#developmentCompanyOpenId').val(data.developmentCompany);
+                        $('#businessPeopleOpenId').val(data.businessPeople);
+                        $('#businessPhoneOpenId').val(data.businessPhone);
+                        $('#DevelopPeopleOpenId').val(data.DevelopPeople);
+                        $('#DevelopPhoneOpenId').val(data.DevelopPhone);
+                        $('#systemCommonOpenId').val(data.systemCommon);
+                        $('#systemDescribeOpenId').val(data.systemDescribe);
+                        $('#deployTimeOpenId').val(data.deployTime);
+                        $('#systemUsernameOpenId').val(data.systemUsername);
+                        $('#systemPasswordOpenId').val(data.systemPassword);
+
+
+                        {#$('#systemStatusOpenId').val(data.systemStatus);#}
+                        {#$('#extranetAccessOpenId').val(data.extranetAccess);#}
+
+                        {#$('#systemStatusOpenId').removeAttr("checked");#}
+                        {#$('#systemStatusOpenId').prop('checked', false);#}
+
+                        {#layer.alert(data.extranetAccess);#}
+
+
+                        if(data.systemStatus == "使用中"){
+                            $("#systemStatusOpenId").attr("checked",true);
+                        }else if(data.systemStatus == "已下线"){
+                            $("#systemStatusOpenId").attr("checked",false);
+                        };
+
+                        if(data.extranetAccess == "开放访问"){
+                            $("#extranetAccessOpenId").attr("checked",true);
+                        }else if(data.extranetAccess == "本地访问"){
+                            $("#extranetAccessOpenId").attr("checked",false);
+                        };
+
+
+                        if(data.extranetAccess == "已脱敏"){
+                            $("#isdesensitizationId").attr("checked",true);
+                        }else if(data.extranetAccess == "未脱敏"){
+                            $("#isdesensitizationId").attr("checked",false);
+                        };
+
+
+                        {## 初始化表单，要加上，不然刷新部分组件可能会不加载#}
+                        form.render();
+
+
+                    },yes:function(i){
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+                    }
+
+                });
+
+
+            } else if(obj.event === 'del'){
+                layer.msg('CopartnershipName：'+ data.CopartnershipName + ' 的删除操作');
+                obj.del();
+                {#layer.close(index);#}
+                layer.confirm('您确定要删除该域名吗?',{btn: ['确定', '取消'],icon:7,title:"提示"}, function(){
+                    $.post('/Copartnership/deleteCopartnershipforline/',{
+                        delete: "yes"
+                        ,CopartnershipName: data.CopartnershipName
+                        ,SLBIP: data.SLBIP
+                        ,systemName: data.systemName
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('删除成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                {#$("#currentTableId")[0].reset()//重置form#}
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+
+
+                });
+
+            }
+            else if(obj.event === 'edit'){
+
+                {#$("[name='a']").val("456");#}
+
+                 {#layer.msg('CopartnershipName：'+ obj.data.CopartnershipName + ' 的编辑操作');#}
+                layer.open({
+                    type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,area: ['auto']
+
+                    {#,area: ['300', '300']#}
+                    ,closeBtn: 1 //显示关闭按钮
+                    ,title: ['编辑资产信息','font-size:16px']
+                    {#,btn: ['立即修改', '取消']#}
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    ,maxmin: true //允许全屏最小化
+                    ,offset: "70px"
+                    ,content:$("#addCopartnershipOpenFormId")  //弹窗路径
+                    ,success:function(layero){
+
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.css('text-align', 'center');
+                        $('#departmentNameOpenId').val(data.departmentName);
+                        $('#systemTypeOpenId').val(data.systemType);
+                        $('#systemNameOpenId').val(data.systemName);
+                        $('#CopartnershipNameOpenId').val(data.CopartnershipName);
+                        $('#SLBIPOpenId').val(data.SLBIP );
+                        $('#SLBPortOpenId').val(data.SLBPort );
+                        $('#accessURLOpenId').val(data.accessURL);
+                        $('#developmentCompanyOpenId').val(data.developmentCompany);
+                        $('#businessPeopleOpenId').val(data.businessPeople);
+                        $('#businessPhoneOpenId').val(data.businessPhone);
+                        $('#DevelopPeopleOpenId').val(data.DevelopPeople);
+                        $('#DevelopPhoneOpenId').val(data.DevelopPhone);
+                        $('#systemUsernameOpenId').val(data.systemUsername);
+                        $('#systemPasswordOpenId').val(data.systemPassword);
+                        $('#systemDescribeOpenId').val(data.systemDescribe);
+                        {#$('#systemStatusOpenId').removeAttr("checked");#}
+                        {#$('#systemStatusOpenId').prop('checked', false);#}
+
+                        {#layer.alert(data.extranetAccess);#}
+                        if(data.systemStatus == "使用中"){
+                            $("#systemStatusOpenId").attr("checked",true);
+                        }else if(data.systemStatus == "已下线"){
+                            $("#systemStatusOpenId").attr("checked",false);
+                        };
+
+                        if(data.extranetAccess == "开放访问"){
+                            $("#extranetAccessOpenId").attr("checked",true);
+                        }else if(data.extranetAccess == "本地访问"){
+                            $("#extranetAccessOpenId").attr("checked",false);
+                        };
+
+                        {## 初始化表单，要加上，不然刷新部分组件可能会不加载#}
+                        form.render();
+
+                        {#$("#systemStatusOpenId").attr("checked",false);#}
+                        {#$("#extranetAccessOpenId").attr("checked",false);#}
+                        {#$("#extranetAccessOpenId").attr("checked",false);#}
+                        {#$("[name=systemStatusOpen]:checkbox").attr("checked",false);#}
+                        {#$("[name=systemStatusOpen]:checkbox").prop("checked",false);#}
+                        {#$('input[name=cnvdServerity]').attr('value', data.cnvdServerity);#}
+                        {#document.getElementById('cnvdServerity').value=data.cnvdServerity;#}
+
+                        {#$('#cveUrlId') = data.cveUrl;#}
+
+                        {## 刷新页面, 否则不显示#}
+                        {#form.val('myFormFilter', {#}
+                        {#    "developmentCompany":  $('#developmentCompanyOpenId').val() })#}
+
+
+                    },yes:function(i){
+
+                        {#调试单选康值#}
+                        {#layer.alert($("#extranetAccessOpenId").is(':checked'));#}
+                        {#layer.alert($("input[name='extranetAccessOpen']:checked").val();#}
+                        {#return false;#}
+
+                        $.ajax({
+                            url: '/Copartnership/editCopartnershipsubmit/',
+                            type: 'post',
+                            dataType: 'json', //预期返回类型
+                            data: {
+                                departmentName: $('#departmentNameOpenId').val(),
+                                systemType: $('#systemTypeOpenId').val(),
+                                systemName: $('#systemNameOpenId').val(),
+                                CopartnershipName: $('#CopartnershipNameOpenId').val(),
+                                SLBIP: $('#SLBIPOpenId').val(),
+                                SLBPort: $('#SLBPortOpenId').val(),
+                                accessURL: $('#accessURLOpenId').val(),
+                                developmentCompany: $('#developmentCompanyOpenId').val(),
+                                businessPeople: $('#businessPeopleOpenId').val(),
+                                businessPhone: $('#businessPhoneOpenId').val(),
+                                DevelopPeople: $('#DevelopPeopleOpenId').val(),
+                                DevelopPhone: $('#DevelopPhoneOpenId').val(),
+                                systemUsername: $('#systemUsernameOpenId').val(),
+                                systemPassword: $('#systemPasswordOpenId').val(),
+
+
+                                {#获取单选框植,不正确#}
+                                {#systemStatus: $('#systemStatusOpenId').val(),#}
+                                {#extranetAccess: $('#extranetAccessOpenId').val(),#}
+                                {#systemStatus: $("input[name='systemStatusOpen']:checked").val(),#}
+                                {#extranetAccess: $("input[name='extranetAccessOpen']:checked").val(),#}
+
+                                {#判断单选框植是否为 on 状态#}
+                                systemStatus: $("#systemStatusOpenId").is(':checked'),
+                                extranetAccess: $("#extranetAccessOpenId").is(':checked'),
+
+                                systemDescribe: $('#systemDescribeOpenId').val(),
+                            },
+                            success:function(data){
+                                if(data == "success"){
+
+                                    layer.alert("修改成功",{ icon:1,title:'提示'},function(index){
+                                        layer.close(index);
+                                        window.location = ("/#/Copartnership/Copartnership/");
+
+                                    });
+                                }else{
+                                    layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                                }
+                            },
+
+                        });
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+                    }
+
+                });
+            }
+
+        });
+
+
+
+
+
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //系统状态开关
+        form.on('switch(systemStatusFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '该域名有效' : '该域名已下线'), {
+                offset: '6px'});
+            if(this.checked){
+                layer.tips('该域名有效', data.othis)
+            }else{
+                layer.tips('该域名已下线', data.othis)
+
+            }
+        });
+
+
+        //外网访问开关
+        form.on('switch(extranetAccessFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '开放互联网访问' : '仅本地访问'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('开放互联网访问', data.othis)
+            }else{
+                layer.tips('仅广安、人济等本地访问', data.othis)
+            }
+
+        });
+
+
+        //弹出层提交按钮
+        form.on('submit(addCopartnership-btn-OpenForm-Filter)', function (data) {
+            $.ajax({
+                url: '/Copartnership/editCopartnershipsubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    companyName: $('#companyNameOpenId').val(),
+                    systemName: $('#systemNameOpenId').val(),
+                    IP: $('#IPOpenId').val(),
+                    domain: $('#domainOpenId').val(),
+                    portService: $('#portServiceOpenId').val(),
+                    information: $('#informationOpenId').val(),
+                    securityPeopleNum: $('#securityPeopleNumOpenId').val(),
+                    testCycle: $('#testCycleOpenId').val(),
+                    userSize: $('#userSizeOpenId').val(),
+                    systemSize: $('#systemSizeOpenId').val(),
+                    deployPoint: $('#deployPointOpenId').val(),
+                    securityTest: $('#securityTestOpenId').val(),
+                    testResult: $('#testResultOpenId').val(),
+                    defensivePower: $('#defensivePowerOpenId').val(),
+                    systemType: $('#systemTypeOpenId').val(),
+                    accessURL: $('#accessURLOpenId').val(),
+                    developmentCompany: $('#developmentCompanyOpenId').val(),
+                    businessPeople: $('#businessPeopleOpenId').val(),
+                    businessPhone: $('#businessPhoneOpenId').val(),
+                    DevelopPeople: $('#DevelopPeopleOpenId').val(),
+                    DevelopPhone: $('#DevelopPhoneOpenId').val(),
+                    systemCommon: $('#systemCommonOpenId').val(),
+                    systemDescribe: $('#systemDescribeOpenId').val(),
+                    deployTime: $('#deployTimeOpenId').val(),
+                    systemUsername: $('#systemUsernameOpenId').val(),
+                    systemPassword: $('#systemPasswordOpenId').val(),
+
+
+                    {#获取单选框植,不正确#}
+                    {#systemStatus: $('#systemStatusOpenId').val(),#}
+                    {#extranetAccess: $('#extranetAccessOpenId').val(),#}
+                    {#systemStatus: $("input[name='systemStatusOpen']:checked").val(),#}
+                    {#extranetAccess: $("input[name='extranetAccessOpen']:checked").val(),#}
+
+                    {#判断单选框植是否为 on 状态#}
+                    systemStatus: $("#systemStatusOpenId").is(':checked'),
+                    extranetAccess: $("#extranetAccessOpenId").is(':checked'),
+                    isdesensitization: $("#isdesensitizationId").is(':checked'),
+
+                },
+
+
+
+
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                                window.parent.location.reload(); //刷新父页面
+                                {#window.location = ("/#/VulnManage/vulnlist/");#}
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+
+
+
+
+            });
+            layer.close(i);
+            layer.close(index);//关闭弹出层
+            {#$("#book")[0].reset()//重置form#}
+            table.reload('currentTableId', {//重载表格
+                page: {
+                    curr: 1
+                }
+            })
+        });
+
+
+
+        //弹出层取消按钮
+        form.on('submit(addCopartnershipCancleOpenForm-Filter)', function (data) {
+
+            layer.closeAll();
+            window.parent.location.reload(); //刷新父页面
+
+
+
+        });
+
+
+
+
+    });
+</script>

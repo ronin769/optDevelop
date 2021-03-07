@@ -1,0 +1,1422 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">编号</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnNoticeFileId" id="searchVulnNoticeFileIdId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">名称</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnNoticeFileName" id="searchVulnNoticeFileNameId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">系统</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnSystemName" id="searchVulnSystemNameId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">级别</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnLevel" id="searchVulnLevelId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">类型</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnType" id="searchVulnTypeId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">域名</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnDomain" id="searchVulnDomainId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">重保</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnSpecialTime" id="searchVulnSpecialTimeId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">研发</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnDevelopCompany" id="searchVulnDevelopCompanyId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 70px">部门</label>
+                            <div class="layui-input-inline" style="width: 120px">
+                                <input type="text" name="searchVulnDepartmentName" id="searchVulnDepartmentNameId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+
+
+
+
+
+
+
+
+
+        {#添加按钮弹窗#}
+        <div class="site-text" style="width:98%; height:600px; margin: 20px  auto auto auto; overflow:auto; display: none" id="viewVulnOpenFormId"  target="test123">
+
+            <form class="layui-form" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="addVulnFormOpenFormId">
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">通知单编号</label>
+                        <div class="layui-input-inline" style="width: 200px">
+                            <input type="text" name="vulnNoticeFileIdOpenForm" id="vulnNoticeFileIdOpenFormId" lay-verify="required" autocomplete="off" placeholder="001" readonly="readonly" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞级别</label>
+                        <div class="layui-input-inline" style="width: 200px">
+                            <select name="vulnLevelOpenForm" id="vulnLevelOpenFormId" lay-search="">
+                                <option value="">请选择漏洞级别</option>
+                                <option value="高危">高危</option>
+                                <option value="中危">中危</option>
+                                <option value="低危">低危</option>
+                                <option value="风险">风险</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞域名</label>
+                        <div class="layui-input-inline" style="width: 200px">
+                            <input type="text" name="vulnDomainOpenForm" id="vulnDomainOpenFormId" lay-verify="required" autocomplete="off" placeholder="漏洞域名"  class="layui-input">
+
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">通知单类型</label>
+                        <div class="layui-input-inline"  style="width: 200px">
+                            <select name="vulnNoticeFileTypeOpenForm" id="vulnNoticeFileTypeOpenFormId"  lay-search="">
+                                <option value="">请选择通知单类型</option>
+                                <option value="漏洞通知单">漏洞通知单</option>
+                                <option value="督查通知单">督查通知单</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">漏洞个数</label>
+                        <div class="layui-input-inline" style="width: 200px">
+                            <input type="text" name="vulnCountOpenForm" id="vulnCountOpenFormId" lay-verify="required" autocomplete="off" placeholder="漏洞个数"  class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">特殊时期</label>
+                        <div class="layui-input-inline"  style="width: 200px">
+                            <select name="vulnSpecialTimeOpenForm" id="vulnSpecialTimeOpenFormId"  placeholder="春节保障"  lay-search="">
+                                <option value="">请选择测试时期</option>
+                                <option value="春节保障">春节保障</option>
+                                <option value="一带一路">一带一路</option>
+                                <option value="两会保障">两会保障</option>
+                                <option value="护网行动">护网行动</option>
+                                <option value="国庆保障">国庆保障</option>
+                                <option value="元旦保障">元旦保障</option>
+                                <option value="其他">其他</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">通知单名称</label>
+                    <div class="layui-input-inline" style="width: 535px">
+                        <input type="text" name="vulnNoticeFileNameOpenForm" id="vulnNoticeFileNameOpenFormId" lay-verify="title" autocomplete="off" placeholder="通知单名称" class="layui-input">
+
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否通知</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="vulnIsNoticeOpenForm" id="vulnIsNoticeOpenFormId" lay-skin="switch" lay-filter="vulnIsNoticeFilter" lay-text="已通知|未通知">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <div class="layui-input-block"></div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否反馈</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsFeedbackOpenForm" id="vulnIsFeedbackOpenFormId" lay-skin="switch" lay-filter="vulnIsFeedbackIdFilter" lay-text="已反馈|未反馈">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否复测</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsRetestOpenForm" id="vulnIsRetestOpenFormId" lay-skin="switch" lay-filter="vulnIsRetestIdFilter" lay-text="已复测|未复测">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <div class="layui-input-block"></div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否修复</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="vulnIsEepairOpenForm" id="vulnIsEepairOpenFormId" lay-skin="switch" lay-filter="vulnIsEepairIdFilter" lay-text="已修复|未修复">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item" pane="">
+                    <label class="layui-form-label">漏洞类型</label>
+                    <div class="layui-input-block" name="vulnTypeOpenForm" id="vulnTypeOpenFormId" style="max-width: 600px">
+                        <input type="checkbox" name="用户名遍历漏洞" lay-skin="primary" title="用户名遍历&#8195">
+                        <input type="checkbox" name="密码暴力猜解漏洞" lay-skin="primary" title="密码暴力猜解">
+                        <input type="checkbox" name="MD5弱加密漏洞" lay-skin="primary" title="弱加密&#8195&#8195&#8195">
+                        <input type="checkbox" name="登录弱口令漏洞" lay-skin="primary" title="登录弱口令&#8195">
+                        <input type="checkbox" name="图片验证码漏洞" lay-skin="primary" title="图片验证码&#8195">
+                        <input type="checkbox" name="短信炸弹漏洞" lay-skin="primary" title="短信炸弹&#8195&#8195">
+                        <input type="checkbox" name="其他登录问题漏洞" lay-skin="primary" title="其他登录问题">
+                        <input type="checkbox" name="任意文件上传漏洞" lay-skin="primary" title="任意文件上传">
+                        <input type="checkbox" name="sql注入漏洞" lay-skin="primary" title="SQL注入&#8195&#8194&nbsp;&nbsp;">
+                        <input type="checkbox" name="跨站脚本攻击漏洞" lay-skin="primary" title="跨站脚本攻击">
+                        <input type="checkbox" name="跨站请求伪造漏洞" lay-skin="primary" title="跨站请求伪造">
+                        <input type="checkbox" name="远程命令执行漏洞" lay-skin="primary" title="远程命令执行">
+                        <input type="checkbox" name="中间件漏洞" lay-skin="primary" title="中间件漏洞&#8195">
+                        <input type="checkbox" name="目录遍历漏洞" lay-skin="primary" title="目录遍历漏洞">
+                        <input type="checkbox" name="URL跳转漏洞" lay-skin="primary" title="URL跳转&#8195&#8195">
+                        <input type="checkbox" name="敏感信息泄露漏洞" lay-skin="primary" title="敏感信息泄露">
+                        <input type="checkbox" name="私搭乱建漏洞" lay-skin="primary" title="私搭乱建&#8195&#8195">
+                        <input type="checkbox" name="源代码泄露漏洞" lay-skin="primary" title="源代码泄露&#8195">
+                        <input type="checkbox" name="未授权访问漏洞" lay-skin="primary" title="未授权访问&#8195">
+                        <input type="checkbox" name="越权逻辑漏洞" lay-skin="primary" title="越权逻辑漏洞">
+                        <input type="checkbox" name="支付逻辑漏洞" lay-skin="primary" title="支付逻辑漏洞">
+                        <input type="checkbox" name="其他逻辑漏洞" lay-skin="primary" title="其他逻辑漏洞">
+                        <input type="checkbox" name="其他漏洞" lay-skin="primary" title="其他漏洞&#8195&#8195">
+
+
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+
+                    <label class="layui-form-label">资料上传</label>
+
+                    <div class=" layui-upload" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-sm" style="width:100px" name="selectWordVulnNoticeFileOpenForm" id="selectWordVulnNoticeFileOpenFormId">选择word通知单</button>
+                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadWordVulnNoticeFileOpenForm" id="startUploadWordVulnNoticeFileOpenFormId">开始上传</button>
+                    </div>
+
+                    <div class=" layui-upload layui-input-block" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-sm"  style="width:100px" name="selectVulnNoticeFileOpenForm" id="selectPdfVulnNoticeFileOpenFormId">选择pdf通知单</button>
+                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnNoticeFileOpenForm" id="startUploadPdfVulnNoticeFileOpenFormId">开始上传</button>
+                    </div>
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">资料上传</label>
+
+
+                    <div class=" layui-upload" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-sm"  style="width:100px" name="selectVulnFeedbackFileOpenForm" id="selectVulnFeedbackFileOpenFormId">选择整改反馈单</button>
+                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnFeedbackFileOpenForm" id="startUploadVulnFeedbackFileOpenFormId">开始上传</button>
+                    </div>
+
+                    <div class=" layui-upload layui-input-block" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-sm" style="width:100px"  name="selectVulnRetestFileOpenForm" id="selectVulnRetestFileOpenFormId">选择复测报告</button>
+                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadVulnRetestFileOpenForm" id="startUploadVulnRetestFileOpenFormId">开始上传</button>
+                    </div>
+
+                </div>
+
+
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">漏洞描述</label>
+                    <div class="layui-input-block" style="width: 535px; max-height: 30px; height: 30px">
+                        <textarea placeholder="请输入内容" name="vulnDetailOpenForm" id="vulnDetailOpenFormId" placeholder="漏洞描述" class="layui-textarea"style="width: 535px; max-height: 30px; height: 30px"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item " style="text-align:center; margin-top: 80px">
+
+                    <div class="layui-input-block ">
+                        <button class="layui-btn" name="editVulnSubmitOpenForm"  id="editVulnSubmitOpenFormId" type="button" style="margin-right: 10px" lay-submit lay-filter="editVulnSubmitOpenFormFilter">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 10px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                        <button class="layui-btn layui-btn-warm" name="addcancle" id="addcancleId" type="button" style="margin-leftr: 10px; margin-right: 80px;" lay-submit lay-filter="addcancleFilter"> &nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp; </button>
+{#                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 150px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>#}
+
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+
+
+
+
+        {#        <div class="layui-btn-group">#}
+{#            <button class="layui-btn data-add-btn layui-btn-normal" href="javascript:;"  data-title="基本资料" data-icon="fa fa-gears">#}
+{#                <i class="layui-icon">&#xe608;</i>#}
+{#                新增#}
+{#            </button>#}
+{##}
+{#            <button class="layui-btn data-delete-btn layui-btn-danger">#}
+{#                <i class="layui-icon">&#xe640;</i>#}
+{#                全部删除#}
+{#            </button>#}
+{#            #}
+{#            <button class="layui-btn data-init-btn layui-btn-warm" href="javascript:;" data-title="初始化" data-icon="fa fa-gears">#}
+{##}
+{#                <i class="layui-icon">&#xe639;</i>#}
+{#                初始化#}
+{#            </button>#}
+{#        </div>#}
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+    </div>
+</div>
+
+
+
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+{#        <button class="layui-btn layui-btn-sm" lay-event="addVulnData" href="javascript:;" data-content-href="VulnManage/addvuln.html" data-title="基本资料" data-icon="fa fa-gears">新增数据</button>#}
+        <button class="layui-btn layui-btn-sm" href="javascript:;" data-content-href="VulnManage/addvulndata/" data-title="基本资料" data-icon="fa fa-gears">新增数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+
+
+{##  {{ d.vulnIsNotice == "on" ? 'checked' : '' }} 将表格的数据给按钮#}
+{% verbatim %}
+<script type="text/html" id="switchVulnIsNoticePdfToolbar">
+    <input type="checkbox" name="switchVlnIsNoticeOpenform" id="switchVlnIsNoticeOpenformId" value="{{d.vulnIsNotice}}" title="已下发" lay-event="switchVlnIsNoticeOpenformEvent" lay-filter="switchVlnIsNoticeOpenformFilter" {{ d.vulnIsNotice == "on" ? 'checked' : '' }}>
+</script>
+
+<script type="text/html" id="switchVulnIsFeedbackToolbar">
+    <input type="checkbox" name="switchVlnIsFeedbackOpenform" id="switchVlnIsFeedbackOpenformId" value="{{d.vulnIsFeedback}}" title="已反馈" lay-event="switchVlnIsFeedbackOpenformEvent" lay-filter="switchVlnIsFeedbackOpenformFilter" {{ d.vulnIsFeedback == "on" ? 'checked' : '' }}>
+</script>
+
+<script type="text/html" id="switchVulnIsRetestToolbar">
+    <input type="checkbox" name="switchVlnIsRetestOpenform" id="switchVlnIsRetestOpenformId" value="{{d.vulnIsNotice}}" title="已复测" lay-event="switchVlnIsRetestOpenformEvent" lay-filter="switchVlnIsRetestOpenformFilter" {{ d.vulnIsRetest == "on" ? 'checked' : '' }}>
+</script>
+
+<script type="text/html" id="switchVulnIsHandleToolbar">
+    <input type="checkbox" name="switchVlnIsRepireOpenform" id="switchVlnIsRepireOpenformId" value="{{d.vulnIsEepair}}" lay-skin="switch"  lay-text="已通过|未通过" lay-event="switchVlnIsRepireOpenformEvent"  lay-filter="switchVlnIsRepireOpenformFilter" {{ d.vulnIsEepair == "on" ? 'checked' : '' }}>
+</script>
+{% endverbatim %}
+
+
+
+{##}
+{##}
+{#<script type="text/html" id="switchVulnIsNoticePdfToolbar">#}
+{#    <input type="checkbox" name="switchVlnIsNotice" id="switchVlnIsNoticeId" value="{{d.vulnIsNotice}}" title="已下发" lay-filter="switchVlnIsNoticeFilter" {{ d.vulnIsNotice == "on" ? 'checked' : '' }}>#}
+{#    &nbsp;#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="selectWordVulnNoticeFileId">上传</a>#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="downloadWordVulnNoticeFileId">下载</a>#}
+{#</script>#}
+{#<script type="text/html" id="switchVulnIsFeedbackToolbar">#}
+{#    <input type="checkbox" name="switchVlnIsFeedback" id="switchVlnIsFeedbackId" value="{{d.vulnIsFeedback}}" title="已反馈" lay-filter="switchVlnIsFeedbackFilter" {{ d.vulnIsFeedback == "on" ? 'checked' : '' }}>#}
+{#    &nbsp;#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="selectPdfVulnNoticeFileId">上传</a>#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="downloadPdfVulnNoticeFileId">下载</a>#}
+{#</script>#}
+{#<script type="text/html" id="switchVulnIsRetestToolbar">#}
+{#    <input type="checkbox" name="switchVlnIsRetest" id="switchVlnIsRetestId" value="{{d.vulnIsNotice}}" title="已复测" lay-filter="switchVlnIsRetestFilter" {{ d.vulnIsRetest == "on" ? 'checked' : '' }}>#}
+{#    &nbsp;#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="selectVulnFeedbackFileId">上传</a>#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="downloadVulnFeedbackFileId">下载</a>#}
+{#</script>#}
+{#<script type="text/html" id="switchVulnIsHandleToolbar">#}
+{#    <input type="checkbox" name="switchVlnIsRepire" id="switchVlnIsRepireId" value="{{d.vulnIsEepair}}" lay-skin="switch"  lay-text="已通过|未通过"  lay-filter="switchVlnIsRepireFilter" {{ d.vulnIsEepair == "on" ? 'checked' : '' }}>#}
+{#    &nbsp;#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="selectVulnRetestFileId">上传</a>#}
+{#    <a class="layui-btn layui-btn-warm layui-btn-xs" id="downloadVulnRetestFileId">下载</a>#}
+{#</script>#}
+
+<script>
+
+
+
+    layui.use(['form', 'layer', 'table', 'upload', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            layer = layui.layer;
+
+        var statusTpl = function (d) { // 参数d是当前行数据
+            if (d.vulnIsEepair == "on") {
+                return '<input type="checkbox" lay-skin="switch" lay-text="启用|禁用" checked> ';
+            } else {
+                return '<input type="checkbox" lay-skin="switch" lay-text="启用|禁用"> ';
+            }
+        };
+
+        // 表格
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'VulnManage/getvulndetail/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-tips'
+            }]
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type: 'numbers', title: '序号',  width:60, align:"center", sort: true,fixed: 'left'}
+                ,{field:'vulnNoticeFileId', title:'编号', width:170, align:'center', sort: true,fixed: 'left', totalRowText: 'text'}
+
+                ,{field:'vulnSystemName', title:'系统名称', width:200, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnCount', title:'个数', width:85, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnLevel', title:'级别', width:85, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnDomain', title:'漏洞域名', width:200, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnType', title:'漏洞类型', width:200, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnIsNotice', title:'是否通知', width:125, templet: '#switchVulnIsNoticePdfToolbar', align:'left', sort: true, totalRowText: 'text', event:'switchVlnIsNoticeOpenformEvent'}
+                ,{field:'vulnIsFeedback', title:'是否反馈', width:125, templet: '#switchVulnIsFeedbackToolbar', align:'left', sort: true, totalRowText: 'text', event:'switchVlnIsFeedbackOpenformEvent'}
+                ,{field:'vulnIsRetest', title:'是否复测', width:125, templet: '#switchVulnIsRetestToolbar', align:'left', sort: true, totalRowText: 'text', event:'switchVlnIsRetestOpenformEvent'}
+                ,{field:'vulnDepartmentName', title:'部门名称', width:150, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnDevelopCompany', title:'开发单位', width:200, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnSpecialTime', title:'特殊时期', width:120, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnNoticeWordPath', title:'vulnNoticeWordPath', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnNoticePdfPath', title:'vulnNoticePdfPath', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnFeedbackPath', title:'vulnFeedbackPath', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnRetestPath', title:'vulnRetestPath', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnNoticeFileName', title:'通知单名字', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnDetail', title:'漏洞描述', width:300, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulncreatePeople', title:'创建人员', width:120, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulncreateTime', title:'创建时间', width:220, align:'left', sort: true, totalRowText: 'text'}
+                ,{field:'vulnupdatePeople', title:'更新人员', width:120, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnupdateTime', title:'更新时间', width:220, align:'left', sort: true, totalRowText: 'text'}
+
+
+                ,{fixed:'right', field:'vulnIsEepair', title:'是否修复', width:120, templet: '#switchVulnIsHandleToolbar', align:'center', sort: true, totalRowText: 'text', event:'switchVlnIsRepireOpenformEvent'}
+                ,{fixed:'right', title:'操作', width:170, align:'center', toolbar: '#optionToolbar',totalRow: true}
+
+            ]]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,limits: [10, 15, 20, 25, 50, 100]
+            ,page: true
+            ,title: '用户数据表'
+            ,id:"tableRenameId" //table.reload()会使用此ID
+            ,done:function(){
+                tableData = table.cache.tableIns;
+            }
+
+        });
+
+
+
+
+        // 监听添加漏洞提交
+        form.on('submit(editVulnSubmitOpenFormFilter)', function (data) {
+            $.ajax({
+                url: '/VulnManage/editvulnsubmit/',
+                type: 'post'
+                ,dataType: 'json' //预期返回类型
+                ,data: data.field,
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                                window.parent.location.reload(); //刷新父页面
+                                {#window.location = ("/#/VulnManage/vulnlist/");#}
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+
+            return false;
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var vulnNoticeFileId = $('#searchVulnNoticeFileIdId').val();
+            var vulnNoticeFileName = $('#searchVulnNoticeFileNameId').val();
+            var vulnSystemName = $('#searchVulnSystemNameId').val();
+            var vulnLevel = $('#searchVulnLevelId').val();
+            var vulnType = $('#searchVulnTypeId').val();
+            var vulnDomain = $('#searchVulnDomainId').val();
+            var vulnSpecialTime = $('#searchVulnSpecialTimeId').val();
+            var vulnDevelopCompany = $('#searchVulnDevelopCompanyId').val();
+            var vulnDepartmentName = $('#searchVulnDepartmentNameId').val();
+
+
+
+            {#table.rander({#}
+            {#    ,title: '用户数据表'#}
+            {#    ,id:"tableRenameId"  }) //table.reload()会使用此ID#}
+            table.reload('tableRenameId', {
+                url: 'VulnManage/searchvulnsubmit/'
+                {#,methods:"post"#}
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    vulnNoticeFileId : vulnNoticeFileId
+                    ,vulnNoticeFileName : vulnNoticeFileName
+                    ,vulnSystemName : vulnSystemName
+                    ,vulnLevel : vulnLevel
+                    ,vulnType : vulnType
+                    ,vulnDomain : vulnDomain
+                    ,vulnSpecialTime : vulnSpecialTime
+                    ,vulnDevelopCompany : vulnDevelopCompany
+                    ,vulnDepartmentName : vulnDepartmentName
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            {#return false;#}
+        });
+
+        // 监听删除操作
+        $(".data-delete-btn").on("click", function () {
+            {#var checkStatus = table.checkStatus('currentTableId')#}
+            {#    , data = checkStatus.data;#}
+            {#layer.alert(JSON.stringify(data));#}
+            layer.alert("请确认是否全部删除",{
+                title: '提示'
+                ,btn: ['全部删除', '取消']
+                ,shadeClose: true
+                ,shade: 0 //遮罩透明度
+                ,yes:function(index, layero){
+                    $.post('/VulnManage/deleteVulhubAll.html',{
+                        deleteAll: "yes"
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('全部删除成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                $("#book")[0].reset()//重置form
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+                }
+                ,btn2: function(index, layero){
+                    layer.close(index);//关闭弹出层
+                }
+            });
+
+        });
+
+        // 监听初始化操作
+        $(".data-init-btn").on("click", function () {
+            layer.msg('初始化数据');
+
+            layer.alert("请确认是否初始化",{
+                title: '提示'
+                ,btn: ['初始化', '取消']
+                ,shadeClose: true
+                ,shade: 0 //遮罩透明度
+                ,yes:function(index, layero){
+                    $.post('/VulnManage/initvulhublist/',{
+                        init: "yes"
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('初始化成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                $("#book")[0].reset()//重置form
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+                }
+                ,btn2: function(index, layero){
+                    layer.close(index);//关闭弹出层
+                }
+            });
+
+
+        });
+
+
+
+
+        //上传 word 的漏洞整改通知单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectWordVulnNoticeFileOpenFormId'
+            ,dragDrop: true                 // 是否可以拖动上传文件
+            {#,url: 'VulnManage/uploadWordVulnNoticeFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadWordVulnNoticeFileOpenFormId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadWordVulnNoticeFileOpenFormId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormOpenFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadWordVulnNoticeFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //上传 PDF 的漏洞整改通知单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectPdfVulnNoticeFileOpenFormId'
+            {#,url: 'VulnManage/uploadWordVulnNoticeFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadPdfVulnNoticeFileOpenFormId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            {#,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"#}
+            ,acceptMime:"application/pdf"
+            ,exts: 'pdf'        //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadPdfVulnNoticeFileOpenFormId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormOpenFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadPdfVulnNoticeFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+
+        //上传 word | PDF 的反馈单,选完文件后不自动上传
+        upload.render({
+            elem: '#selectVulnFeedbackFileOpenFormId'
+            {#,url: 'VulnManage/uploadVulnFeedbackFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadVulnFeedbackFileOpenFormId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,.pdf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx|pdf'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadVulnFeedbackFileOpenFormId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormOpenFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadVulnFeedbackFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //上传 word 的复测报告,选完文件后不自动上传
+        upload.render({
+            elem: '#selectVulnRetestFileOpenFormId'
+            {#,url: 'VulnManage/uploadVulnRetestFile/'#}
+            ,auto: false            //是否选完文件后自动上传
+            {##}
+            {#//,multiple: true       //是否允许多文件上传#}
+            {#,bindAction: '#startUploadVulnRetestFilOpenFormeId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadVulnRetestFileOpenFormId").on("click",function () {
+            var addVulnFormId = document.getElementById("addVulnFormOpenFormId");   //获取所要提交form的id
+            var joinFormData = new FormData(addVulnFormId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'VulnManage/uploadVulnRetestFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //下发开关,tips, 提示层
+        {#form.on('checkbox(switchVlnIsNoticeOpenformFilter)', function (data) {#}
+        {##}
+            {#layer.msg('开关checked：' + (this.checked ? '已收到整改反馈单' : '未收到整改反馈单'), {#}
+            {#    offset: '6px'});#}
+        {#    console.log("form.on")#}
+        {#    if (data.elem.checked) {#}
+                {#$("#switchVlnIsFeedbackOpenformId").attr("checked", false);#}
+        {#        layer.tips('测试按钮开关的tips开关', data.othis, {#}
+                    {#tips: [2, '#151F9acd']#}
+        {#            tips: 2#}
+        {#        }, function () {#}
+        {#            //#}
+        {#        });#}
+        {##}
+        {#        console.log(data.elem.checked);#}
+        {#    } else {#}
+                {#$("#switchVlnIsFeedbackOpenformId").attr("checked", true);#}
+        {#        layer.tips('测试按钮开关的tips开关', data.othis, {#}
+        {#            tips: [2, '#9F1F9acd']#}
+        {#        }, function () {#}
+        {#            //#}
+        {#        });#}
+        {#        console.log(data.elem.checked);#}
+        {##}
+        {#    }#}
+        {#});#}
+
+
+
+
+
+        //头工具栏事件
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                {#case 'addVulnData':#}
+                {#    var data = checkStatus.data;#}
+                {#    layer.alert("addVulnData");#}
+                {#    break;#}
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+
+
+
+        //监听行工具事件  查看资产信息
+        table.on('tool(currentTableFilter)', function(obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据（json格式的键值对）
+
+            //监听行工具事件 删除
+            if(obj.event === 'del'){
+                {#layer.msg('domainName：'+ data.domainName + ' 的删除操作');#}
+                obj.del();
+                {#layer.close(index);#}
+                layer.confirm('您确定要删除该漏洞吗?',{btn: ['确定', '取消'],icon:7,title:"提示"}, function(){
+                    $.post('/VulnManage/deletevulnforline/',{
+                        delete: "yes"
+                        ,vulnDomain: data.vulnDomain
+                        ,vulnNoticeFileId: data.vulnNoticeFileId
+                        ,vulnNoticeFileName: data.vulnNoticeFileName
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('删除成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                {#$("#currentTableId")[0].reset()//重置form#}
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+
+
+                });
+
+            }
+
+            //监听行工具事件 编辑
+            else if(obj.event === 'edit'  || obj.event === 'detail'){
+
+                {#$("[name='a']").val("456");#}
+
+                {#layer.msg('domainName：'+ obj.data.domainName + ' 的编辑操作');#}
+                layer.open({
+                    area: ['auto']
+                    {#,btn: ['立即修改', '取消']#}
+                    ,maxHeight: "400px"
+                    ,type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,scrollbar: true
+                    {#,area: ['300', '300']#}
+                    ,closeBtn: 1 //显示关闭按钮
+                    ,title: ['修改漏洞信息','font-size:16px']
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    {#,fixed:true#}
+                    {#,top:300#}
+                    ,offset:"70px"
+                    ,maxmin: true //允许全屏最小化
+
+                    ,content:$("#viewVulnOpenFormId")  //弹窗路径
+                    ,success:function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.css('text-align', 'center');
+                        {#var btn = layero.find('.layui-layer-btn');#}
+                        {#btn.css('text-align', 'center');#}
+                        {#$('#vulnNoticeFileIdOpenFormId').val(data.vulnNoticeFileId);#}
+                        $('#vulnNoticeFileIdOpenFormId').val(data.vulnNoticeFileId.match(/\d+/g)[0]);
+                        $('#vulnNoticeFileNameOpenFormId').val(data.vulnNoticeFileName);
+                        $('#vulnDomainOpenFormId').val(data.vulnDomain);
+                        $('#vulnSystemNameOpenFormId').val(data.vulnSystemName);
+                        $('#vulnDepartmentNameOpenFormId').val(data.vulnDepartmentName);
+                        $('#vulnLevelOpenFormId').val(data.vulnLevel);
+                        $('#vulnCountOpenFormId').val(data.vulnCount);
+                        $('#vulnSpecialTimeOpenFormId').val(data.vulnSpecialTime);
+                        $('#vulnDetailOpenFormId').val(data.vulnDetail);
+                        $('#vulnDevelopCompanyOpenFormId').val(data.vulnDevelopCompany);
+                        {#$('#vulnNoticeFileTypeOpenFormId').val(data.vulnNoticeFileId);#}
+                        $('#vulnNoticeFileTypeOpenFormId').val(data.vulnNoticeFileId.split("[")[0]);
+                        $('#vulncreateTimeOpenFormId').val(data.vulncreateTime);
+                        $('#vulnupdateTimeOpenFormId').val(data.vulnupdateTime);
+                        $('#vulncreatePeopleOpenFormId').val(data.vulncreatePeople);
+                        $('#vulnupdatePeopleOpenFormId').val(data.vulnupdatePeople);
+
+                        {#$('#systemStatusOpenId').val(data.systemStatus);#}
+                        {#$('#extranetAccessOpenId').val(data.extranetAccess);#}
+                        {#$('#systemStatusOpenId').removeAttr("checked");#}
+                        {#$('#systemStatusOpenId').prop('checked', false);#}
+
+
+                        {#layer.alert(data.extranetAccess);#}
+
+
+                        if (data.vulnIsNotice == "on") {
+                            $("#vulnIsNoticeOpenFormId").attr("checked", true);
+                        } else if (data.vulnIsNotice == "已下线") {
+                            $("#vulnIsNoticeOpenFormId").attr("checked", false);
+                        };
+
+                        if (data.vulnIsFeedback == "on") {
+                            $("#vulnIsFeedbackOpenFormId").attr("checked", true);
+                        } else if (data.vulnIsFeedback == "本地访问") {
+                            $("#vulnIsFeedbackOpenFormId").attr("checked", false);
+                        };
+
+
+                        if (data.vulnIsRetest == "on") {
+                            $("#vulnIsRetestOpenFormId").attr("checked", true);
+                        } else if (data.vulnIsRetest == "本地访问") {
+                            $("#vulnIsRetestOpenFormId").attr("checked", false);
+                        };
+
+                        if (data.vulnIsEepair == "on") {
+                            $("#vulnIsEepairOpenFormId").attr("checked", true);
+                            {#$("[name=vulnIsEepairOpenForm]:checkbox").attr("checked",true);#}
+
+                        } else if (data.vulnIsEepair == "本地访问") {
+                            $("#vulnIsEepairOpenFormId").attr("checked", false);
+                        };
+
+                        {#$('#vulnTypeOpenFormId').val(data.vulnType);#}
+
+                        {#data.vulnType = "用户名遍历漏洞,任意文件上传漏洞,支付逻辑漏洞";#}
+                        if(data.vulnType != ""){
+                            data.vulnType.forEach(function(e){
+                                $("[name=" + e + "]:checkbox").attr("checked", true);}
+                            );
+                        }
+
+
+                        {#$.each(data.vulnType.split(","), function (index, obj) {#}
+                        {#    $("[name=" + obj + "]:checkbox").attr("checked", true);});#}
+
+
+                        form.render();
+
+                        {#$("#systemStatusOpenId").attr("checked",false);#}
+                        {#$("#extranetAccessOpenId").attr("checked",false);#}
+                        {#$("#extranetAccessOpenId").attr("checked",false);#}
+                        {#$("[name=systemStatusOpen]:checkbox").attr("checked",false);#}
+                        {#$("[name=systemStatusOpen]:checkbox").prop("checked",false);#}
+                        {#$('input[name=cnvdServerity]').attr('value', data.cnvdServerity);#}
+                        {#document.getElementById('cnvdServerity').value=data.cnvdServerity;#}
+
+                        {#$('#cveUrlId') = data.cveUrl;#}
+
+                        {## 刷新页面, 否则不显示#}
+                        {#form.val('myFormFilter', {#}
+                        {#    "developmentCompany":  $('#developmentCompanyOpenId').val() })#}
+                    },yes:function(i){
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+                    }
+
+                })
+
+            }else
+
+                //下发通知单开关
+            if(obj.event === "switchVlnIsNoticeOpenformEvent" ){
+
+                layer.alert("是否修改复测情况",{
+                    icon:3
+                    ,btn: ["修改", "取消"]
+                    ,title:'提示'
+                    ,yes: function (index) {
+                        $.post('/VulnManage/editvulnisnotice/',{
+                            vulnNoticeFileId: obj.data.vulnNoticeFileId
+                            ,vulnIsNotice: obj.data.vulnIsNotice
+                        },function(data){
+                            //根据后台返回的参数，来进行判断
+                            if(data.status == "on"){
+                                layer.alert("修改为: 已下发通知单",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+                                })
+                            }else if(data.status == "off"){
+
+                                layer.alert("修改为: 未下发通知单",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+
+                                })
+
+                            } else{
+                                layer.alert('修改失败',{
+                                    icon:2
+                                    ,title:'提示'
+                                });
+                            }
+                        });
+
+                    }
+                    ,btn2: function (index) {
+                        window.parent.location.reload(); //刷新父页面
+
+                    }
+                })
+
+
+            }else//收到反馈开关
+            if(obj.event === "switchVlnIsFeedbackOpenformEvent" ){
+                layer.alert("是否修改复测情况",{
+                    icon:3
+                    ,btn: ["修改", "取消"]
+                    ,title:'提示'
+                    ,yes: function (index) {
+                        $.post('/VulnManage/editvulnisfeeedback/',{
+                            vulnNoticeFileId: obj.data.vulnNoticeFileId
+                            ,vulnIsFeedback: obj.data.vulnIsFeedback
+                        },function(data){
+                            //根据后台返回的参数，来进行判断
+                            if(data.status == "on"){
+                                layer.alert("修改为: 已收到反馈单",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+                                })
+                            }else if(data.status == "off"){
+
+                                layer.alert("修改为: 未收到反馈单",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+
+                                })
+
+                            } else{
+                                layer.alert('修改失败',{
+                                    icon:2
+                                    ,title:'提示'
+                                });
+                            }
+                        });
+
+                    }
+                    ,btn2: function (index) {
+                        window.parent.location.reload(); //刷新父页面
+
+                    }
+                })
+
+
+            }else
+
+                //完成复测报告
+            if(obj.event === "switchVlnIsRetestOpenformEvent" ){
+
+
+                layer.alert("是否修改复测情况",{
+                    icon:3
+                    ,btn: ["修改", "取消"]
+                    ,title:'提示'
+                    ,yes: function (index) {
+                        $.post('/VulnManage/editvulnisretest/',{
+                            vulnNoticeFileId: obj.data.vulnNoticeFileId
+                            ,vulnIsRetest: obj.data.vulnIsRetest
+                        },function(data){
+                            //根据后台返回的参数，来进行判断
+                            if(data.status == "on"){
+                                layer.alert("修改为: 已完成复测",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+                                })
+                            }else if(data.status == "off"){
+
+                                layer.alert("修改为: 未完成复测",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+
+                                })
+
+                            } else{
+                                layer.alert('修改失败',{
+                                    icon:2
+                                    ,title:'提示'
+                                });
+                            }
+                        });
+
+                    }
+                    ,btn2: function (index) {
+                        window.parent.location.reload(); //刷新父页面
+
+                    }
+                })
+
+
+            }
+            else
+                //完成复测报告
+            if(obj.event === "switchVlnIsRepireOpenformEvent" ){
+                layer.alert("是否修改修改情况",{
+                    icon:3
+                    ,btn: ["修改", "取消"]
+                    ,title:'提示'
+                    ,yes: function (index) {
+                        $.post('/VulnManage/editvulnisrepire/',{
+                            vulnNoticeFileId: obj.data.vulnNoticeFileId
+                            ,vulnIsEepair: obj.data.vulnIsEepair
+                        },function(data){
+                            //根据后台返回的参数，来进行判断
+                            if(data.status == "on"){
+                                layer.alert("修改为: 已完成修复",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+                                })
+                            }else if(data.status == "off"){
+
+                                layer.alert("修改为: 未完成修复",{
+                                    icon:1
+                                    ,title:'提示'
+                                    ,yes: function(index, layero){
+                                        layer.close(index);
+                                        layer.closeAll()
+                                        window.parent.location.reload(); //刷新父页面
+                                        {#window.location = ("/#/VulnManage/vulnlist/");#}
+                                    }
+                                });
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+
+                                })
+
+                            } else{
+                                layer.alert('修改失败',{
+                                    icon:2
+                                    ,title:'提示'
+                                });
+                            }
+                        });
+                    }
+                    ,btn2: function (index) {
+                        window.parent.location.reload(); //刷新父页面
+
+                    }
+                })
+            }
+
+
+
+
+        });
+
+
+
+
+        // 监听添加漏洞取消
+        form.on('submit(addcancleFilter)', function (data) {
+
+            {#//获取checkbox[name='like1']的值#}
+            {#var arr = new Array();#}
+            {#$("input:checkbox[name='vulnName']:checked").each(function(i){#}
+            {#    arr[i] = $(this).val(); });#}
+            {#data.field.like = arr.join(",");//将数组合并成字符串#}
+
+            layer.closeAll()
+            window.parent.location.reload(); //刷新父页面
+
+            return false;
+        });
+
+
+    });
+
+
+
+
+
+</script>

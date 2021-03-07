@@ -1,0 +1,521 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        </br>
+
+        {#        <fieldset class="layui-elem-field layuimini-search">#}
+        {#            <legend>搜索信息</legend>#}
+        {#            <div style="margin: 10px 10px 10px 10px">#}
+        {#                <form class="layui-form layui-form-pane" action="">#}
+        {#                    <div class="layui-form-item">#}
+        {#                        <div class="layui-inline">#}
+        {#                            <label class="layui-form-label" style="width: 90px">部门</label>#}
+        {#                            <div class="layui-input-inline" style="width: 110px">#}
+        {#                                <input type="text" id="departmentNameId" name="departmentName" autocomplete="off" class="layui-input">#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                        #}
+        {#                        <div class="layui-inline">#}
+        {#                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </form>#}
+        {#            </div>#}
+        {#        </fieldset>#}
+
+{#        </br>#}
+{#        </br>#}
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend >新增资产</legend>
+            </br>
+            <form class="layui-form  layui-input-block" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="myFormId">
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司名称<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline">
+                            <select name="departmentName" id="departmentNameId" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="上海">上海</option>
+                                <option value="湖南">湖南</option>
+                                <option value="河北">河北</option>
+                                <option value="湖北">湖北</option>
+                                <option value="陕西">陕西</option>
+                                <option value="重庆">重庆</option>
+                                <option value="山东">山东</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统名称<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemName" id="systemNameId" lay-verify="required" lay-reqtext="系统名称是必填项，不能为空" placeholder="系统名称" autocomplete="off" class="layui-input">                    </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统类型</label>
+                        <div class="layui-input-inline">
+                            <select name="systemType" id="systemTypeId" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="APP应用系统">APP应用系统</option>
+                                <option value="Web页面登录">Web页面登录</option>
+                                <option value="公众号小程序">公众号小程序</option>
+                                <option value="接口调用">接口调用</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" >IP</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="IP" id="IPId" lay-verify="pass" placeholder="IP" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">域名</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="domain" id="domainId" lay-verify="pass" placeholder="域名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">端口及服务</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="portService" id="portServiceId" lay-verify="pass" placeholder="端口及服务" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">访问URL</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="accessURL" id="accessURLId" lay-verify="pass"  autocomplete="off" placeholder="访问URL" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">敏感信息</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="information" id="informationId" lay-verify="pass"  placeholder="敏感信息" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">安全人数</label>
+                        <div class="layui-input-inline">
+                            <input type="number" name="securityPeopleNum" id="securityPeopleNumId" lay-verify="pass"  placeholder="安全人数" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">检查周期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="testCycle" id="testCycleId" lay-verify="pass"  placeholder="检查周期" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户规模</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="userSize" id="userSizeId" lay-verify="pass"  placeholder="100万用户" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统规模</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemSize" id="systemSizeId" lay-verify="pass"  placeholder="10台服务器" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">部署位置</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="deployPoint" id="deployPointId" lay-verify="pass"  placeholder="阿里公有云" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">部署时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="deployTime" id="deployTimeId" lay-verify="pass"  placeholder="部署时间" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开发单位</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="developmentCompany" id="developmentCompanyId" lay-verify="pass"  placeholder="开发单位" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">安全测评</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="securityTest" id="securityTestId" lay-verify="pass"  placeholder="备案信息" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">测评结果</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="testResult" id="testResultId" lay-verify="pass"  placeholder="无漏洞" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">防御能力</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="defensivePower" id="defensivePowerId" lay-verify="pass"  placeholder="有IPS WAF" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务联系人</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="businessPeople" id="businessPeopleId" lay-verify="title" autocomplete="off" placeholder="业务联系人" class="layui-input">
+
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">业务电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="businessPhone" id="businessPhoneId" lay-verify="title" autocomplete="off" placeholder="业务电话" class="layui-input">
+
+                        </div>
+
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">项目经理</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="DevelopPeople" id="DevelopPeopleId" lay-verify="title" autocomplete="off" placeholder="项目经理" class="layui-input">
+
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">经理电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="DevelopPhone" id="DevelopPhoneId" lay-verify="title" autocomplete="off" placeholder="经理电话" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemUsername" id="systemUsernameId" lay-verify="pass" placeholder="用户名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="systemPassword" id="systemPasswordId" lay-verify="pass" placeholder="密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">系统状态</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="systemStatus" id="systemStatusId" lay-skin="switch" lay-filter="systemStatusFilter" lay-text="使用中|已下线">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">外网访问</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="extranetAccess" id="extranetAccessId" lay-skin="switch" lay-filter="extranetAccessFilter" lay-text="开放访问|本地访问">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">是否脱敏</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="isdesensitization" id="isdesensitizationId" lay-skin="switch" lay-filter="isdesensitizationFilter" lay-text="已脱敏|未脱敏">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">系统简介</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="systemDescribe" id="systemDescribeId" placeholder="描述信息" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="systemCommon" id="systemCommonId" placeholder="描述信息" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+
+
+
+
+                {#                <div class="layui-form-item layui-form-text">#}
+                {#                  <label class="layui-form-label">编辑器</label>#}
+                {#                  <div class="layui-input-block">#}
+                {#                    <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>#}
+                {#                  </div>#}
+                {#                </div>#}
+                <div class="layui-form-item " style="text-align:center">
+                    <div class="layui-input-block ">
+                        {#                        <button type="button" class="layui-btn" onclick="addcopartnershipmsg()" lay-filter="addcopartnership-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        {#                        <button class="layui-btn" lay-filter="addcopartnership-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        <button class="layui-btn" id="addcopartnershipSubmitId" type="button" style="margin-right: 150px">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+
+
+        <!-- 示例-970 -->
+        {#        <ins class="adsbygoogle" style="width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery
+            , form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        {#var editIndex = layedit.build('LAY_demo_editor');#}
+
+        {#//自定义验证规则#}
+        {#form.verify({#}
+        {#    required: function (value) {#}
+        {#        if (value.length < 5) {#}
+        {#            return '标题至少得5个字符啊'; }}#}
+        {#    , pass: [#}
+        {#        /^[\S]{6,12}$/#}
+        {#        , '密码必须6到12位，且不能出现空格' ]#}
+        {#    , title: function (value) {#}
+        {#        layedit.sync(editIndex);}});#}
+
+        //系统状态开关
+        form.on('switch(systemStatusFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '该域名有效' : '该域名已下线'), {
+                offset: '6px'});
+            if(this.checked){
+                layer.tips('该域名有效', data.othis)
+            }else{
+                layer.tips('该域名已下线', data.othis)
+
+            }
+        });
+
+
+        //外网访问开关
+        form.on('switch(extranetAccessFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '开放互联网访问' : '仅本地访问'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('开放互联网访问', data.othis)
+            }else{
+                layer.tips('仅广安、人济等本地访问', data.othis)
+            }
+
+        });
+
+        //是否脱敏开关
+        form.on('switch(isdesensitizationFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '已脱敏' : '未脱敏'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('已脱敏', data.othis)
+            }else{
+                layer.tips('未脱敏', data.othis)
+            }
+
+        });
+
+
+
+
+
+
+
+        //监听提交
+        $("#addcopartnershipSubmitId").on("click", function () {
+
+            {#layer.alert("123156");#}
+            $.ajax({
+                url: '/Copartnership/addcopartnershipsubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    companyName: $('#companyNameId').val(),
+                    systemName: $('#systemNameId').val(),
+                    IP: $('#IPId').val(),
+                    domain: $('#domainId').val(),
+                    portService: $('#portServiceId').val(),
+                    information: $('#informationId').val(),
+                    isdesensitization: $('#isdesensitizationId').val(),
+                    securityPeopleNum: $('#securityPeopleNumId').val(),
+                    testCycle: $('#testCycleId').val(),
+                    userSize: $('#userSizeId').val(),
+                    systemSize: $('#systemSizeId').val(),
+                    deployPoint: $('#deployPointId').val(),
+                    securityTest: $('#securityTestId').val(),
+                    testResult: $('#testResultId').val(),
+                    systemType: $('#systemTypeId').val(),
+                    defensivePower: $('#defensivePowerId').val(),
+                    systemStatus: $('#systemStatusId').val(),
+                    accessURL: $('#accessURLId').val(),
+                    developmentCompany: $('#developmentCompanyId').val(),
+                    extranetAccess: $('#extranetAccessId').val(),
+                    businessPeople: $('#businessPeopleId').val(),
+                    businessPhone: $('#businessPhoneId').val(),
+                    DevelopPeople: $('#DevelopPeopleId').val(),
+                    DevelopPhone: $('#DevelopPhoneId').val(),
+                    systemCommon: $('#systemCommonId').val(),
+                    systemDescribe: $('#systemDescribeId').val(),
+                    deployTime: $('#deployTimeId').val(),
+                    createPeople: $('#createPeopleId').val(),
+                    systemUsername: $('#systemUsernameId').val(),
+                    systemPassword: $('#systemPasswordId').val(),
+
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("添加成功",{ icon:1,title:'提示'},function(index){
+                            layer.close(index);
+                            {#window.parent.location.reload(); //刷新父页面#}
+                            window.location = ("/#/Copartnership/copartnership/");
+
+                        });
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+
+            return false;
+        });
+
+        {#//表单初始赋值#}
+        {#form.val('myFormFilter', {#}
+        {#    "departmentName": "上海" // "name": "value"#}
+        {#    , "systemName": "测试系统"#}
+        {#    , "domain": "www.test.com"#}
+        {#    , "systemType": "APP应用系统"#}
+        {#    , "systemStatus": true#}
+        {#    , "accessURL": "url" //复选框选中状态#}
+        {#    , "developmentCompany": "科东"#}
+        {#    , "extranetAccess": true#}
+        {#    , "businessPeople": "businessPeople"#}
+        {#    , "businessPhone": "businessPhone"#}
+        {#    , "DevelopPeople": "DevelopPeople"#}
+        {#    , "DevelopPhone": "DevelopPhone"#}
+        {#    , "systemDescribe": "systemDescribe"#}
+        {#    , "systemUsername": "systemUsername"#}
+        {#    , "systemPassword": "systemPassword"})#}
+
+
+
+
+
+    });
+
+
+
+    {#window.onload = function () {#}
+    {#    var submit = document.getElementById("addcopartnershipSubmitId");#}
+    {#    submit.onclick = function(event){#}
+    {#        alert("不提交");#}
+    {#        return false;#}
+    {#    };    }#}
+
+
+
+</script>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/javascript; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>周边（圆形区域）检索</title>
+    <style type="text/css">
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        body, button, input, select, textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+        p{
+            width:603px;
+            padding-top:3px;
+            margin-top:10px;
+            overflow:hidden;
+        }
+        #container {
+            min-width:800px;
+            min-height:750px;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+    <script type="text/javascript" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/lib/jq-module/jquery.particleground.min.js" charset="utf-8"></script>
+
+</head>
+<body onload="init()">
+{#<p>输入关键词，点击search查寻，查寻范围这一个点坐标。</p>#}
+
+
+
+
+<div>
+    <input id="keyword" type="textbox" style="width: 400px; height: 30px; margin-left: 100px;" value="113.201.49.24">
+    <input type="button" value="search" onclick="searchKeyword()">
+    <input id="latitudeId" type="textbox" style="width: 200px; height: 30px; margin-left: 100px" value="">
+    <input type="button" value="经纬度" onclick="searchLatitude()">
+    <input type="button" value="重  置" style="margin-left: 100px" onclick="reset()">
+</div>
+
+<textarea  id="wordId" style="width: 90%; height: 120px; margin-left: 100px; margin-right: 100px" placeholder="详细地址"> </textarea>
+{#<textarea  id="wordId" autoHeight="true" style="width: 90%; height: 120px; margin-left: 100px; margin-right: 100px" placeholder="详细地址"> </textarea>#}
+
+{#</br>#}
+
+<div id="container"></div>
+
+</body>
+<script type="text/javascript" src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script>
+
+
+
+    var geocoder, map, marker = null;
+    var init = function() {
+        var center = new qq.maps.LatLng(39.909604, 116.397228);
+        map = new qq.maps.Map(document.getElementById('container'), {
+            center: center,
+            zoom: 30
+        });
+        //地址和经纬度之间进行转换服务
+        geocoder = new qq.maps.Geocoder();
+        //设置服务请求成功的回调函数
+        geocoder.setComplete(function(result) {
+            map.setCenter(result.detail.location);
+            var marker = new qq.maps.Marker({
+                map: map,
+                position: result.detail.location
+            });
+            //点击Marker会弹出反查结果
+            var info = new qq.maps.InfoWindow({
+                map: map
+            });
+            qq.maps.event.addListener(marker, 'click', function() {
+                info.open();
+                info.setContent('<div style="width:280px;height:100px;">' +
+                    result.detail.address + '</div>');
+                info.setPosition(result.detail.location);
+            });
+        });
+        //若服务请求失败，则运行以下函数
+        geocoder.setError(function() {
+            alert("出错了，请输入正确的经纬度！！！");
+        });
+    };
+
+    //调用poi类信接口
+    function searchKeyword() {
+        var keyword = document.getElementById("keyword").value;
+            $.get('/getTecentMap/',{
+            IPADDR: keyword
+        },function(data){
+            //根据后台返回的参数，来进行判断
+            if(data.code == "0"){
+                {#alert(data.locatews);#}
+                $("#latitudeId").val(data.locatews);
+                var latlngStr = data.locatews.split(",", 2);
+                var lat = parseFloat(latlngStr[0]);
+                var lng = parseFloat(latlngStr[1]);
+                var latLng = new qq.maps.LatLng(lat, lng);
+                //对指定经纬度进行解析
+                geocoder.getAddress(latLng);
+                {#alert(data.locateAddress)#}
+                $("#wordId").val(data.locateAddress.replace("\n", "</br>"))
+            }else{
+                layer.alert("查询失败!",{
+                    icon:2
+                    ,title:'提示'
+                });
+
+            }
+        });
+
+    }
+
+    function searchLatitude() {
+        //获取输入框的经纬度
+        var latitudeId = document.getElementById("latitudeId").value;
+        var latlngStr = latitudeId.split(",", 2);
+        var lat = parseFloat(latlngStr[0]);
+        var lng = parseFloat(latlngStr[1]);
+        var latLng = new qq.maps.LatLng(lat, lng);
+        //对指定经纬度进行解析
+        geocoder.getAddress(latLng);
+    }
+
+
+    function reset() {
+        //获取输入框的经纬度
+        document.getElementById("wordId").value = "";
+        document.getElementById("latitudeId").value = "";
+        location.reload();
+
+    }
+
+
+
+</script>
+</html>

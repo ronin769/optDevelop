@@ -1,0 +1,366 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">漏洞编号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="vulNum" id="vulNumId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">漏洞名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="vulName" id="vulNameId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">漏洞类型</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="vulType" id="vulTypeId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">漏洞状态</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="vulStatus" id="vulStatusId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+    </div>
+</div>
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="currentTableBar">
+    <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">新增</a>
+    <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+</script>
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn data-add-btn layui-btn-sm" href="javascript:;"  data-title="新增漏洞" data-icon="fa fa-gears">
+            <i class="layui-icon">&#xe608;</i>
+            新增漏洞
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" href="javascript:;" data-title="初始化" data-icon="fa fa-gears" lay-event="initvulhub">
+            <i class="layui-icon">&#xe639;</i>
+            初始化
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-sm layui-btn-danger" lay-event="deleteAll">
+            <i class="layui-icon">&#xe640;</i>
+            全部删除
+        </button>
+    </div>
+</script>
+
+
+<script type="text/html" id="switchStatus">
+    <!-- 这里的 checked 的状态只是演示 -->
+{#    {% for item in li %}#}
+        <input type="checkbox" name="vulStatus" value="true" lay-skin="switch" lay-text="启用|关闭" lay-filter="vulStatus" >
+{#    {% endfor %}#}
+
+</script>
+
+
+<script type="text/html" id="checkboxOption">
+    <!-- 这里的 checked 的状态只是演示 -->
+{#    {% for item in li %}#}
+        <input type="checkbox" name="vulOption" value="true" title="已处理" lay-filter="vulOption"
+{#            {{ item.vulOption == true ? 'true' : 'false' }}>#}
+{#    {% endfor %}#}
+</script>
+
+
+
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'VulnManage/getvulhubdetail/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title: '提示'
+            ,layEvent: 'LAYTABLE_TIPS'
+            ,icon: 'layui-icon-tips'
+        }]
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type: 'numbers', title: '序号', align:"center", sort: true,fixed: 'left',width:100,}
+                ,{field:'vulhubName', title:'漏洞名称', width:260, sort: true, edit: 'text', fixed: 'left'}
+                ,{field:'vulhubApp', title:'中间件名称', width:150,  unresize: true, sort: true, totalRowText: 'text'}
+                ,{field:'vulhubCVE', title:'CVE编号', width:150, sort: true, edit: 'text'}
+                ,{field:'vulhubPath', title:'漏洞路径', width:300, sort: true, totalRow: true}
+                ,{field:'vulhubStatus', title:'漏洞状态', width:120, edit: 'text', sort: true}
+                ,{field:'vulhubData', title:'漏洞时间', width:150, sort: true, totalRow: true}
+                ,{fixed:'right', title:'操作', width:200, align:'center', toolbar: '#optionToolbar',totalRow: true}
+                ,{fixed:'right', field:'vulhubStatus', title:'漏洞状态', width:85, templet: '#switchStatus', unresize: true}
+                ,{fixed:'right', field:'vulhubOption', title:'是否处理', width:110, templet: '#checkboxOption', unresize: true}
+
+            ]]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,limits: [10, 15, 20, 25, 50, 100]
+            ,page: true
+            ,title: '用户数据表'
+
+        });
+
+        //监听状态操作
+        form.on('switch(vulStatus)', function(obj){
+            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            {#layer.alert(obj.elem.checked)#}
+
+            var vstatus = obj.elem.checked;
+            if (obj.elem.checked){
+                vstatus = "on"
+            }else {
+                vstatus = "off"
+            }
+
+            layer.alert(vstatus)
+
+
+            {#https://www.jb51.net/article/170520.htm#}
+
+        });
+
+        //监听锁定操作
+        form.on('checkbox(vulOption)', function(obj){
+            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            {#layer.alert(obj.value)#}
+            {#layer.alert(obj.elem.checked)#}
+
+            var vstatus = obj.elem.checked;
+            if (obj.elem.checked){
+                vstatus = "true"
+            }else {
+                vstatus = "false"
+            }
+
+            layer.alert(vstatus)
+
+        });
+
+
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            {#var seatchParse = $('.layui-input').val();#}
+            var vulNumId = $('#vulNumId').val();
+            var vulNameId = $('#vulNameId').val();
+            var vulTypeId = $('#vulTypeId').val();
+            var vulStatusId = $('#vulStatusId').val();
+
+            var massage = layer.msg('查询中，请稍后...');
+            table.reload('currentTableId', {
+                url: 'VulnManage/searchpath/'
+                ,methods:"post"
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    vulNumId : vulNumId
+                    ,vulNameId : vulNameId
+                    ,vulTypeId : vulTypeId
+                    ,vulStatusId : vulStatusId
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            layer.close(massage)
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(currentTableFilter)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.id + ' 的查看操作');
+
+
+
+
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                    {##}
+
+
+                });
+            } else if(obj.event === 'edit'){
+                layer.prompt({
+                    formType: 2
+                    ,value: data.email
+                }, function(value, index){
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });
+            }
+        });
+
+
+        //头工具栏事件
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+
+
+
+                case 'initvulhub':
+                    // 监听初始化操作
+                    layer.msg('初始化数据');
+                    layer.alert("请确认是否初始化",{
+                        title: '提示'
+                        ,btn: ['初始化', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/VulnManage/initvulhublist/',{
+                                init: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('初始化成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        $("#book")[0].reset()//重置form
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                case 'deleteAll':
+                    // 监听删除操作
+                {#var checkStatus = table.checkStatus('currentTableId')#}
+                {#    , data = checkStatus.data;#}
+                {#layer.alert(JSON.stringify(data));#}
+                    layer.alert("请确认是否全部删除",{
+                        title: '提示'
+                        ,btn: ['全部删除', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/VulnManage/deleteVulhubAll/',{
+                                deleteAll: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('全部删除成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        $("#book")[0].reset()//重置form
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+    });
+</script>

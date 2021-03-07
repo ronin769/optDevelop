@@ -1,0 +1,102 @@
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+
+
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <div class="layui-form layuimini-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">旧的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="old_password" lay-verify="required" lay-reqtext="旧的密码不能为空" placeholder="请输入旧的密码"  value="qwe123!@#" class="layui-input">
+                    <tip>填写自己账号的旧的密码。</tip>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label required">新的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="new_password" lay-verify="required" lay-reqtext="新的密码不能为空" placeholder="请输入新的密码"  value="qwe123!@#" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">新的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="again_password" lay-verify="required" lay-reqtext="新的密码不能为空" placeholder="请输入新的密码"  value="qwe123!@#" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="saveBtn">确认保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.use(['form'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            data = data.field;
+            if (data.old_password == '') {
+                layer.msg('旧密码不能为空');
+                return false;
+            }
+            if (data.new_password == '') {
+                layer.msg('新密码不能为空');
+                return false;
+            }
+            if (data.again_password == '') {
+                layer.msg('确认密码不能为空');
+                return false;
+            }
+            if (data.new_password != data.again_password) {
+                layer.msg('两次密码不一致');
+                {#layer.alert('两次密码不一致',{ icon:2,title:'提示' },function(index){layer.close(index);});#}
+                return false;
+            }
+
+            {#layer.alert(JSON.stringify(data), {title: '最终的提交信息'});#}
+
+
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                {#dataType: "json",//预期服务器返回的数据类型#}
+                url: "/user/changepasswdsubmit/" ,//url
+                data: {
+                    old_password: data.old_password,
+                    new_password: data.new_password,
+                    again_password: data.again_password,
+                },
+                success: function(data){
+
+                    if(data == "密码修改成功"){
+                        window.location = '/user/login/';
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+
+                    }
+
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+
+            return false;
+        });
+
+
+
+    });
+</script>

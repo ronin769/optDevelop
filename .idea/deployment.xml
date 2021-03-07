@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="root@119.3.158.102:10022">
+    <serverData>
+      <paths name="119.3.158.102">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/src/optDevelop" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@119.3.158.102:10022">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_216" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

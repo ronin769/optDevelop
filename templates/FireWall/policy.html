@@ -1,0 +1,709 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px">源IP</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="sourceIPID" name="sourceIP" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px">目的IP</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="directionIPID" name="directionIP" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px">服务</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="policyServiceId" name="policyService" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px">策略描述</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="policyCommentId" name="policyComment" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+
+
+
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">新增</a>
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="site-text" style="margin: 50px 300px 50px 300px  ; display: none" id="addVulnOpenFormId"  target="test123">
+    <form class="layui-form" id="cnvdEdit" method="post" lay-filter="formText">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">CNVD编号</label>
+            <div class="layui-input-block">
+                <input type="text" id="cnvdNumber" name="cnvdNumber" lay-verify="title" autocomplete="off" placeholder="cnvd-2017-0146" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">CVE编号</label>
+            <div class="layui-input-block">
+                <input type="text" id="cveNumber" name="cveNumber" lay-verify="title" autocomplete="off" placeholder="cve-2017-0146" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" id="cnvdTitle" name="cnvdTitle" lay-verify="title" placeholder="缓冲区溢出" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">是否开启</label>
+            <div class="layui-input-block">
+                <input type="checkbox" id="vulStatus" name="vulStatus" lay-filter="switchVulStatus" lay-skin="switch" lay-text="是|否">
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+
+        <button type="button" class="layui-btn layui-btn-sm data-download-btn layui-btn-normal" id="downloadFirewallTemplateFileId" name="downloadDomainTemplateFile">
+            <a href="/FireWall/downloadFirewallTemplateFile/" style="color: white; ">
+                <i class="layui-icon">&#xe601;</i>
+                下载模板
+            </a>
+        </button>
+
+        <button type="button" class="layui-btn layui-btn-sm" id="selectFileId2" name="selectFile2">选择文件 (firewall.xls)</button>
+        <button type="button" class="layui-btn layui-btn-sm" layui-btn-sm id="startUploadId2" name="startUpload2">
+            <i class="layui-icon">&#xe681;</i>
+            开始上传
+        </button>
+        <button type="button" class="layui-btn layui-btn-sm" id="selectFileId" name="selectFile">选择文件 (pf.log)</button>
+        <button type="button" class="layui-btn layui-btn-sm" id="startUploadId" name="startUpload">
+            <i class="layui-icon">&#xe681;</i>
+            开始上传
+        </button>
+
+
+
+
+        <button class="layui-btn layui-btn-sm layui-btn-sm layui-btn-normal" href="javascript:;" data-title="初始化" data-icon="fa fa-gears" lay-event="initpolicy">
+            <i class="layui-icon">&#xe639;</i>
+            初始化
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-sm layui-btn-danger" lay-event="deleteAll">
+            <i class="layui-icon">&#xe640;</i>
+            全部删除
+        </button>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</script>
+
+
+<script type="text/html" id="switchStatus">
+    <!-- 这里的 checked 的状态只是演示 -->
+    {#    {% for item in li %}#}
+    <input type="checkbox" name="vulStatus" value="true" lay-skin="switch" lay-text="启用|关闭" lay-filter="vulStatus" >
+    {#    {% endfor %}#}
+
+</script>
+
+
+<script type="text/html" id="checkboxOption">
+    <!-- 这里的 checked 的状态只是演示 -->
+    {#    {% for item in li %}#}
+    <input type="checkbox" name="vulOption" value="true" title="已处理" lay-filter="vulOption"
+            {#            {{ item.vulOption == true ? 'true' : 'false' }}>#}
+            {#    {% endfor %}#}
+</script>
+
+
+
+<script>
+    layui.use(['form', 'layer', 'table', 'upload'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload;
+
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'FireWall/getpolicylist/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-tips'
+            }]
+            {#,initSort: {field:'cnvdNumber', type:'desc'}#}
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                {#,{type: 'numbers', title: '序号', align:"center", sort: true,fixed: 'left',width:80,}#}
+                ,{field:'ruleId', title:'规则ID', width:100, sort: true, align:'center',fixed: 'left'}
+                ,{field:'ruleName', title:'规则名称', width:130, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'ruleSa', title:'源IP', width:220, event: 'getRuleSa', style:'cursor: pointer;'}
+                ,{field:'ruleDa', title:'目的IP', width:220, event: 'getRuleDa', style:'cursor: pointer;', sort: true, totalRowText: 'text'}
+                {#,{field:'ruleIzone', title:'Izone', width:80, align:'center', unresize: true, sort: true, totalRowText: 'text'}#}
+                {#,{field:'ruleOzone', title:'Ozone', width:80, align:'center', unresize: true, sort: true, totalRowText: 'text'}#}
+                ,{field:'ruleService', title:'服务', width:260, event: 'getRuleService', style:'cursor: pointer;', sort: true, totalRowText: 'text'}
+                ,{field:'ruleComment', title:'规则描述', width:300, sort: true, totalRowText: 'text'}
+                ,{field:'ruleAccount', title:'命中数', width:150, align:'center', sort: true, totalRowText: 'text'}
+
+                ,{field:'ruleActive', title:'是否生效', width:120, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'ruleOpentime', title:'期限', width:100, align:'center', sort: true, totalRowText: 'text'}
+
+                ,{fixed:'right', title:'操作', width:200, align:'center', toolbar: '#optionToolbar',totalRow: true}
+
+                {#,{fixed:'cveDiscovererName', field:'发现人', title:'漏洞状态', width:85, templet: '#switchStatus', unresize: true}#}
+                {#,{fixed:'cveReferenceLink', field:'vulOption', title:'是否处理', width:110, templet: '#checkboxOption', unresize: true}#}
+
+            ]]
+            ,limits: [10, 50, 100, 150, 200, 300, 500]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,page: true
+            ,title: '用户数据表'
+
+        });
+
+
+
+
+
+
+
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            {#var seatchParse = $('.layui-input').val();#}
+            var sourceIP = $('#sourceIPID').val();
+            var directionIP = $('#directionIPID').val();
+            var policyService = $('#policyServiceId').val();
+            var policyComment = $('#policyCommentId').val();
+
+            var massage = layer.msg('查询中，请稍后...');
+            table.reload('currentTableId', {
+                url: 'FireWall/searchpolicy/'
+                ,methods:"post"
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    sourceIP : sourceIP
+                    ,directionIP : directionIP
+                    ,policyService : policyService
+                    ,policyComment : policyComment
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            layer.close(massage)
+        });
+
+
+
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#selectFileId'
+            ,url: 'FireWall/uploadpolicy/'
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            ,bindAction: '#startUploadId'
+            ,accept: 'file' //允许上传的文件类型
+            {#,acceptMime: 'text/*'#}
+            {#,size: 50 //最大允许上传的文件大小#}
+            {#,before:function(obj){#}
+            {#    obj.preview(function(index, file, result){#}
+            {#        alert(file.name);#}
+            {#    });#}
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+            }
+
+            ,done: function(res, index, upload){
+                if (res.code == 0){
+                    layer.closeAll('loading'); //关闭loading
+                    layer.alert("上传成功");
+                }
+            }
+        });
+
+        //选完文件后不自动上传2
+        upload.render({
+            elem: '#selectFileId2'
+            ,url: 'FireWall/uploadhitnumber/'
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            ,bindAction: '#startUploadId2'
+            ,accept: 'file' //允许上传的文件类型
+            {#,acceptMime: 'text/*'#}
+            {#,size: 50 //最大允许上传的文件大小#}
+            {#,before:function(obj){#}
+            {#    obj.preview(function(index, file, result){#}
+            {#        alert(file.name);#}
+            {#    });#}
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+            }
+
+            ,done: function(res, index, upload){
+                if (res.code == 0){
+                    layer.closeAll('loading'); //关闭loading
+                    layer.alert("上传成功");
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+        //头工具栏事件
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+                case 'deleteAll':
+                    // 监听头工具删除操作
+                    layer.alert("请确认是否全部删除",{
+                        icon:7
+                        ,title: '提示'
+                        ,btn: ['全部删除', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/FireWall/deletepolicyall/',{
+                                deleteAll: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('全部删除成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                case 'initpolicy':
+                    // 监听头工具初始化操作
+                    {#var checkStatus = table.checkStatus('currentTableId')#}
+                    {#    , data = checkStatus.data;#}
+                    {#layer.alert(JSON.stringify(data));#}
+                    layer.alert("请确认是否初始化",{
+                        icon:3
+                        ,title: '提示'
+                        ,btn: ['初始化', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/FireWall/initpolicy/',{
+                                init: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('初始化成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }else{
+                                    layer.alert(data,{
+                                        icon:2
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+
+                    break;
+
+
+
+
+
+
+
+
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+
+
+        {#//监听表格复选框选择#}
+        {#table.on('checkbox(currentTableFilter)', function (obj) {#}
+        {#    console.log(obj)#}
+        {##}
+        {#table.on('tool(currentTableFilter)', function (obj) {#}
+        {#    var data = obj.data;#}
+        {#    if (obj.event === 'edit') {#}
+        {#        layer.alert('编辑行：<br>' + JSON.stringify(data))#}
+        {#    } else if (obj.event === 'delete') {#}
+        {#        layer.confirm('真的删除行么', function (index) {#}
+        {#            obj.del();#}
+        {#            layer.close(index);#}
+        {#        });#}
+        {#    }#}
+
+        //监听行工具事件
+        table.on('tool(currentTableFilter)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据（json格式的键值对）
+                {#,layEvent = obj.event //获得 lay-event 对应的值（编辑、删除、添加）#}
+                ,editList=[]; //存放获取到的那条json数据中的value值（不放key）
+            $.each(
+                data,function(name,value) {//循环遍历json数据
+                    editList.push(value);
+                    //将json数据中的value放入数组中（下面的子窗口显示的时候要用到）
+                });
+
+            if(obj.event === 'detail'){
+                {#var data = obj.data; //获得当前行数据#}
+                {#var tr = obj.tr//活动当前行tr 的  DOM对象#}
+                {#layer.msg('cnvdNumber：'+ data.cnvdNumber + ' 的查看操作');#}
+
+
+                layer.open({
+                    type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,area: ['1024', '960']
+                    ,closeBtn: 0 //不显示关闭按钮
+                    ,title: ['查看漏洞信息','font-size:16px']
+                    ,btn: ['确定', '关闭']
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    ,maxmin: true //允许全屏最小化
+                    ,content:$("#addVulnOpenFormId")  //弹窗路径
+                    ,success:function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.css('text-align', 'center');
+                        $('#cnvdNumber').val(data.cnvdNumber);
+                        $('#cnvdTitle').val(data.cnvdTitle);
+                        $('#cveNumber').val(data.cveNumber);
+                        {#,$('#cnvdNumber') = data.cnvdNumber#}
+
+
+
+
+                    },yes:function(i){
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+                    }
+
+                });
+
+            } else if(obj.event === 'del'){
+                layer.msg('cnvdNumber：'+ data.cnvdNumber + ' 的删除操作');
+                obj.del();
+                {#layer.close(index);#}
+                layer.confirm('您确定要删除该用户吗?',{
+                    icon:7
+                    ,btn: ['确定', '取消']
+                    ,title:"提示"
+                }, function(){
+                    $.post('/VulnManage/deletecnvdvulforline.html',{
+                        delete: "yes"
+                        ,cnvdNumber: data.cnvdNumber
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('删除成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                {#$("#currentTableId")[0].reset()//重置form#}
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+
+
+                });
+
+            }
+            else if(obj.event === 'edit'){
+                layer.open({
+                    type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,area: ['1024', '960']
+                    ,title: ['查看漏洞信息','font-size:16px']
+                    ,btn: ['更新', '取消',]
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    ,maxmin: true //允许全屏最小化
+                    ,content:$("#addVulnOpenFormId")  //弹窗路径
+                    ,success:function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.css('text-align', 'center');
+                        $('#cnvdNumber').val(data.cnvdNumber);
+                        $('#cnvdTitle').val(data.cnvdTitle);
+                        $('#cveNumber').val(data.cveNumber);
+                        {#,$('#cnvdNumber') = data.cnvdNumber#}
+                    },yes:function(index){
+                        $.post('/VulnManage/editcnvdvulforline.html',{
+                            edit: "yes"
+                            ,cnvdNumber: data.cnvdNumber
+                            ,cnvdTitle: data.cnvdTitle
+                            ,cveNumber: data.cveNumber
+                        },function(data){
+                            //根据后台返回的参数，来进行判断
+
+                            if(data == "success"){
+                                layer.alert('编辑成功',{icon:1,title:'提示'},function(i){
+                                    layer.close(i);
+                                    layer.close(index);//关闭弹出层
+                                    $("#currentTableId")[0].reset()//重置form
+                                });
+                                table.reload('currentTableId',{//重载表格
+                                    page:{
+                                        curr:1
+                                    }
+                                })
+                            }
+
+
+                        });
+                        layer.close(index);//关闭弹出层
+
+                    },cancel:function (i) {
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+
+                    }
+
+                });
+            }
+            else if(obj.event === 'getRuleSa'){
+                {#layer.alert(data.ruleSa)#}
+                {#$('#cveNumber').val();#}
+
+                $.post('FireWall/getsourceip/',{
+                    ruleSa:data.ruleSa
+                },function(data1){
+                    if(data1 == "该数据不是单一IP组，无法查询！"){
+                        layer.alert(data1, {
+                            icon:5
+                            ,title:data.ruleService
+                            ,area: ['400px']
+                        })
+                    }else{
+                        layer.alert(data1, {
+                            icon:1
+                            ,title:data.ruleService
+                            ,area: ['400px']
+                        })
+                    }
+
+                });
+
+
+            }
+
+            else if(obj.event === 'getRuleDa'){
+                {#layer.alert(data.ruleSa)#}
+                {#$('#cveNumber').val();#}
+
+                $.post('FireWall/getdirectionip/',{
+                    ruleDa:data.ruleDa
+                },function(data1){
+                    if(data.ruleDa != ""){
+                        var ruleDaValue = data.ruleDa;
+                        layer.alert(data1, {
+                            icon:1
+                            ,title: ruleDaValue
+                            ,area: ['350px']
+
+                        });
+                    }else{
+                        var ruleDaValue = "提示";
+                        layer.alert(data1, {
+                            icon:2
+                            ,title: ruleDaValue
+                            ,area: ['350px']
+
+                        });
+                    }
+
+                });
+
+            }
+
+            else if(obj.event === 'getRuleService'){
+                {#layer.alert(data.ruleSa)#}
+                {#$('#cveNumber').val();#}
+
+                $.post('FireWall/getruleservice/',{
+                    ruleService:data.ruleService
+                },function(data1){
+                    if(data1 == "该数据存在多个服务组，查询失败！"){
+                        data.ruleService
+                        layer.alert(data1, {
+                            icon:2
+                            ,title: "提示"
+                            ,area: ['500px']
+                        })
+                    }else if(data1 == "未查询到数据"){
+                        layer.alert(data1, {
+                            icon:2
+                            ,title:data.ruleService
+                            ,area: ['500px']
+                        })
+                    }else{
+                        layer.alert(data1, {
+                            icon:1
+                            ,title:data.ruleService
+                            ,area: ['500px']
+                        })
+                    }
+
+
+
+
+
+
+                });
+
+
+            }
+
+
+
+
+        });
+    });
+</script>

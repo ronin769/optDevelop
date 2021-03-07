@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MitmProxy/mitmproxy_examples" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/VulnManage/vulhub" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mitmproxy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mitmproxy_examples" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vulhub" vcs="Git" />
+  </component>
+</project>

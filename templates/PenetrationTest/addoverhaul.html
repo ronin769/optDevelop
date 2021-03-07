@@ -1,0 +1,665 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        </br>
+
+        {#        <fieldset class="layui-elem-field layuimini-search">#}
+        {#            <legend>搜索信息</legend>#}
+        {#            <div style="margin: 10px 10px 10px 10px">#}
+        {#                <form class="layui-form layui-form-pane" action="">#}
+        {#                    <div class="layui-form-item">#}
+        {#                        <div class="layui-inline">#}
+        {#                            <label class="layui-form-label" style="width: 90px">部门</label>#}
+        {#                            <div class="layui-input-inline" style="width: 110px">#}
+        {#                                <input type="text" id="departmentNameId" name="departmentName" autocomplete="off" class="layui-input">#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                        #}
+        {#                        <div class="layui-inline">#}
+        {#                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </form>#}
+        {#            </div>#}
+        {#        </fieldset>#}
+
+        {#        </br>#}
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>新增渗透测试信息</legend>
+            </br>
+
+
+
+
+            <form class="layui-form  layui-input-block" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="addOverhaulId">
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">渗透编号<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="number" name="overhaulId" id="overhaulIdId" lay-verify="required" autocomplete="off" placeholder="20200101" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">功能个数<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="number" name="functionNum" id="functionNumId" lay-verify="required" autocomplete="off" placeholder="功能个数" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">测试类型<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline"  >
+                            <select name="testStyle" id="testStyleId"  lay-search=""  lay-verify="required">
+                                <option value="">请选择测试类型</option>
+                                <option value="功能测试">功能测试</option>
+                                <option value="接口测试">接口测试</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="layui-form-item">
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">申请人员<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="applyName" id="applyNameId"  autocomplete="off" lay-verify="required" placeholder="申请人 联系方式" class="layui-input">
+
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block ">系统名称<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="systemName" id="systemNameId" lay-verify="required" autocomplete="off" placeholder="e充电APP" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">系统版本<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="systemVersion" id="systemVersionId" lay-verify="required" autocomplete="off" placeholder="v1.0.1" class="layui-input">
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="layui-form-item">
+
+
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label layui-input-block">联系方式</label>#}
+{#                        <div class="layui-input-inline" >#}
+{#                            <input type="text" name="applyPhone" id="applyPhoneId"  autocomplete="off" placeholder="申请人联系方式" class="layui-input">#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">计划上线</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="releaseTime" id="releaseTimeId" placeholder="yyyy-MM-dd"  class="layui-input" >
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label  layui-input-block">申请时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="applyTime" id="applyTimeId" placeholder="yyyy-MM-dd"  class="layui-input" >
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label  layui-input-block">测试时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="testTime" id="testTimeId" placeholder="yyyy-MM-dd"  class="layui-input" >
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">渗透测试<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline"  >
+                            <select name="PenetrationTestName" id="PenetrationTestNameId"  lay-search="" lay-verify="required">
+                                <option value="">请选择渗透测试人员</option>
+                                <option value="刘德文">刘德文</option>
+                                <option value="张娇楠">张娇楠</option>
+                                <option value="许捷">许捷</option>
+                                <option value="罗佳宇">罗佳宇</option>
+                                <option value="秦鹏">秦鹏</option>
+                                <option value="孙庆贺">孙庆贺</option>
+                                <option value="陈广源">陈广源</option>
+                                <option value="赵明宇">赵明宇</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">漏洞个数<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" >
+                            <input type="number" name="vulnNum" id="vulnNumId" autocomplete="off" placeholder="漏洞个数" lay-verify="required"  class="layui-input">
+
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">漏洞名称</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="vulnDetail" id="vulnDetailId" autocomplete="off" placeholder="XSS、SQL注入、未授权访问" class="layui-input">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+
+
+
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label layui-input-block">项目经理</label>#}
+{#                        <div class="layui-input-inline" >#}
+{#                            <input type="text" name="projectBossName" id="projectBossNameId"  autocomplete="off" placeholder="项目经理" class="layui-input">#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label layui-input-block">联系方式</label>#}
+{#                        <div class="layui-input-inline" >#}
+{#                            <input type="text" name="projectBossPhone" id="projectBossPhoneId"  autocomplete="off" placeholder="项目经理联系方式" class="layui-input">#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+
+
+
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label">功能测试</label>#}
+{#                        <div class="layui-input-inline"  >#}
+{#                            <select name="functionTestName" id="functionTestNameId"  lay-search="">#}
+{#                                <option value="">请选择功能测试人员</option>#}
+{#                                <option value="刘德文">刘德文</option>#}
+{#                                <option value="张娇楠">张娇楠</option>#}
+{#                                <option value="许捷">许捷</option>#}
+{#                                <option value="罗佳宇">罗佳宇</option>#}
+{#                                <option value="秦鹏">秦鹏</option>#}
+{#                                <option value="孙庆贺">孙庆贺</option>#}
+{#                                <option value="陈广源">陈广源</option>#}
+{#                                <option value="赵明宇">赵明宇</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
+
+
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label layui-input-block">渗透测试</label>#}
+{#                        <div class="layui-input-inline" >#}
+{#                            <input type="text" name="PenetrationTestName" id="PenetrationTestNameId" lay-verify="required" autocomplete="off" placeholder="渗透测试人员" class="layui-input">#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+
+
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label ">开发单位</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="developCompany" id="developCompanyId" autocomplete="off" placeholder="开发单位" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">测试地址</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="testURL" id="testURLId" autocomplete="off" placeholder="http://127.0.0.1" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">测试账号</label>
+                        <div class="layui-input-inline" >
+                            <input type="text" name="testUserName" id="testUserNameId" autocomplete="off" placeholder="测试账号/测试密码" class="layui-input">
+
+                        </div>
+                    </div>
+
+                    {#                    <div class="layui-inline">#}
+                    {#                        <label class="layui-form-label layui-input-block">测试密码</label>#}
+                    {#                        <div class="layui-input-inline" >#}
+                    {#                            <input type="text" name="testPassword" id="testPasswordId" autocomplete="off" placeholder="测试密码" class="layui-input">#}
+                    {##}
+                    {#                        </div>#}
+                    {#                    </div>#}
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline  " >
+                        </br>
+
+                        <label class="layui-form-label " >功能报告</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="functionReportIsExist" id="functionReportIsExistId" lay-skin="switch" lay-filter="functionReportIsExistFilter" lay-text="有功能|无功能">
+                            {#                            <input type="checkbox" checked="" name="reportIsExist" id="reportIsExistId" lay-skin="switch" lay-filter="reportIsExistFilter" lay-text="已通知|未通知">#}
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline  " >
+                        </br>
+
+                        <label class="layui-form-label " >是否报告</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="reportIsExist" id="reportIsExistId" lay-skin="switch" lay-filter="reportIsExistFilter" lay-text="有报告|无报告">
+{#                            <input type="checkbox" checked="" name="reportIsExist" id="reportIsExistId" lay-skin="switch" lay-filter="reportIsExistFilter" lay-text="已通知|未通知">#}
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-input-block">
+                        </br>
+
+                        <label class="layui-form-label ">是否记录</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="recordIsExist" id="recordIsExistId" lay-skin="switch" lay-filter="recordIsExistIdFilter" lay-text="已记录|未记录">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-input-block">
+                        </br>
+
+                        <label class="layui-form-label ">是否通过</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="testIsOK" id="testIsOKId" lay-skin="switch" lay-filter="testIsOKFilter" lay-text="已通过|未通过">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+{#                <div class="layui-form-item">#}
+{##}
+{#                    <label class="layui-form-label">资料上传</label>#}
+{##}
+{#                    <div class=" layui-upload" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectReportFile" id="selectReportFileId">选择测试报告</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadReportFile" id="startUploadReportFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{#                    <div class=" layui-upload layui-input-block" style="display:inline">#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="selectRecordFile" id="selectRecordFileId">选择测试记录</button>#}
+{#                        <button type="button" class="layui-btn layui-btn-sm" name="startUploadRecordFile" id="startUploadRecordFileId">开始上传</button>#}
+{#                    </div>#}
+{##}
+{##}
+{#                </div>#}
+
+
+
+                <div class="layui-form-item layui-form-text ">
+                    <label class="layui-form-label">测试内容</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容，选填" name="overhaulContent" id="overhaulContentId" placeholder="测试内容描述，选填" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-form-item " style="text-align:center">
+                    <div class="layui-input-block ">
+                        <button class="layui-btn" id="addOverhaulSubmitId" type="button" style="margin-right: 150px" lay-submit lay-filter="addOverhaulSubmitFilter">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;清空&nbsp;&nbsp;&nbsp;&nbsp; </button>
+{#                        <a class="layui-btn" id="addVulnCancleId" type="button" style="margin-right: 300px" lay-submit lay-filter="addVulnCancleFilter">立即提交</a>#}
+{#                        <button class="layui-btn" id="addOverhaulSubmitId" type="button" style="margin-right: 150px" lay-submit lay-filter="addOverhaulSubmitFilter">立即提交</button>#}
+{#                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>#}
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+
+
+        <!-- 示例-970 -->
+        {#        <ins class="adsbygoogle" style="width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layer', 'table', 'upload', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            layer = layui.layer;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+
+        //日期
+        laydate.render({
+            elem: '#applyTimeId'
+        });
+
+        //常规用法
+        laydate.render({
+            elem: '#testTimeId'
+        });
+
+        //常规用法
+        laydate.render({
+            elem: '#releaseTimeId'
+        });
+
+        form.render();
+
+        //完成测试报告开关
+        form.on('switch(functionReportIsExistFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已下发整改通知单' : '未下发整改通知单'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已完成功能报告', data.othis)
+            }else{
+                layer.tips('未完成功能报告', data.othis)
+
+            }
+        });
+
+
+        //完成测试报告开关
+        form.on('switch(reportIsExistFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已下发整改通知单' : '未下发整改通知单'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已完成测试报告', data.othis)
+            }else{
+                layer.tips('未完成测试报告', data.othis)
+
+            }
+        });
+
+        //完成测试记录开关
+        form.on('switch(recordIsExistIdFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已收到整改反馈单' : '未收到整改反馈单'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('已完成测试记录', data.othis)
+            }else{
+                layer.tips('未完成测试记录', data.othis)
+
+            }
+        });
+
+        //测试通过开关
+        form.on('switch(testIsOKFilter)', function (data) {
+            {#layer.msg('开关checked：' + (this.checked ? '已完成复测并有复测报告' : '未完成复测'), {#}
+            {#    offset: '6px'});#}
+            if(this.checked){
+                layer.tips('测试通过', data.othis)
+            }else{
+                layer.tips('测试未通过', data.othis)
+
+            }
+        });
+
+
+
+        // 监听添加漏洞提交
+        form.on('submit(addOverhaulSubmitFilter)', function (data) {
+            {#//获取checkbox[name='like1']的值#}
+            {#var arr = new Array();#}
+            {#$("input:checkbox[name='vulnName']:checked").each(function(i){#}
+            {#    arr[i] = $(this).val(); });#}
+            {#data.field.like = arr.join(",");//将数组合并成字符串#}
+
+
+            $.ajax({
+                url: '/PenetrationTest/addOverhaulSubmit/',
+                type: 'post'
+                ,dataType: 'json' //预期返回类型
+                ,data: data.field,
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("添加成功",{ icon:1,title:'提示'},function(index){
+                            layer.close(index);
+
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+            {#window.location = '/#/PenetrationTest/addOverhaulSubmit/';#}
+            {#window.parent.location.reload(); //刷新父页面#}
+            {#window.location = ("/#/PenetrationTest/overhaul/");#}
+
+            return false;
+        });
+
+
+
+        //上传 word 的测试报告,选完文件后不自动上传
+        upload.render({
+            elem: '#selectReportFileId'
+            ,dragDrop: true                 // 是否可以拖动上传文件
+            {#,url: 'VulnManage/uploadWordsystemName/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadWordsystemNameId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,.pdf,.zip,.rar,.7z,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx|pdf|zip|rar|7z'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadReportFileId").on("click",function () {
+            var addOverhaulId = document.getElementById("addOverhaulId");   //获取所要提交form的id
+            var joinFormData = new FormData(addOverhaulId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'PenetrationTest/uploadReportFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+        //上传 word测试记录,选完文件后不自动上传
+        upload.render({
+            elem: '#selectRecordFileId'
+            ,dragDrop: true                 // 是否可以拖动上传文件
+            {#,url: 'VulnManage/uploadWordsystemName/'#}
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            {#,bindAction: '#startUploadWordsystemNameId'#}
+            ,accept: 'file' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
+            ,acceptMime: ".docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ,exts: 'doc|docx'   //允许上传的文件后缀。一般结合 accept 参数类设定。假设 accept 为 file 类型时，那么你设置 exts: 'zip|rar|7z' 即代表只允许上传压缩格式的文件。如果 accept 未设定，那么限制的就是图片的文件格式
+
+
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+
+            }
+            ,done: function(data, index, upload){
+                layer.closeAll('loading'); //关闭loading
+                layer.close(index);
+            }
+        });
+
+        $("#startUploadRecordFileId").on("click",function () {
+            var addOverhaulId = document.getElementById("addOverhaulId");   //获取所要提交form的id
+            var joinFormData = new FormData(addOverhaulId);       //用所要提交form做参数建立一个formdata对象
+
+            $.ajax({
+                url: 'PenetrationTest/uploadRecordFile/'
+                ,type: "POST"
+                ,data: joinFormData
+                ,async : false
+                ,contentType: false   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
+                ,processData: false   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+                ,error : function(request) {
+                    parent.layer.alert("网络超时");
+                }
+                ,success: function (data) {
+                    if (data.code == "0"){
+                        layer.alert(data.msg,{
+                            icon:1
+                            ,title:'提示'
+                        });
+                    }else(
+                        layer.alert(data.msg,{
+                            icon:2
+                            ,title:'提示'
+                        })
+                    );
+                }
+            });
+            return false;
+        });
+
+
+
+
+
+
+        //表单初始赋值
+        form.val('myFormFilter', {
+            "overhaulId": "2020061801"
+            {#, "systemName": "XX系统"#}
+            {#, "systemVersion": "V1.0.1"#}
+            {#, "functionNum": "8"#}
+            {#, "testStyle":"功能测试"#}
+            {#, "functionList":"functionList"#}
+            {#, "overhaulContent":"overhaulContent"#}
+            {#, "developCompany":"developCompany"#}
+            {#, "applyName":"赵四"#}
+            {#, "applyPhone":"13145603333"#}
+            {#, "projectBossName":"赵四"#}
+            {#, "projectBossPhone":"13145602222"#}
+            {#, "functionTestName":"赵四"#}
+            {#, "PenetrationTestName":"赵四"#}
+            {#, "testUserName":"admin"#}
+            {#, "testPassword":"password"#}
+            {#, "testURL":"http://192.168.0.1"#}
+            {#, "vulnNum":"6"#}
+            {#, "vulnDetail":"sql xss"#}
+            {#, "reportIsExist":""#}
+            {#, "recordIsExist":""#}
+            {#, "testIsOK":""#}
+            {#, "applyTime":"2020-06-18"#}
+            {#, "testTime":"2020-06-18"#}
+            {#, "releaseTime":"2020-06-18"#}
+        });
+
+
+
+
+    });
+
+
+
+    {#window.onload = function () {#}
+    {#    var submit = document.getElementById("adddomainSubmitId");#}
+    {#    submit.onclick = function(event){#}
+    {#        alert("不提交");#}
+    {#        return false;#}
+    {#    };    }#}
+
+
+
+</script>

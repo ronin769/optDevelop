@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快来领取你的免费咖啡</title>
+    <link rel="stylesheet" type="text/css" href='/static/css/check.css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "/static/js/hm.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body>
+<div class="ur-index">
+    <div class="box">
+        <a href="?xxx"><div class="card_bag">我的卡包</div></a>
+        <div class="get_process">获取流程</div>
+        <div>
+        </br>
+        </div>
+        <form id ='frm'>
+            <div class="form " style="height: 100px">
+                <input type="text" name="username" id="usernameId" style="height: 30px"  class="tel" placeholder="请输入姓名">
+                <input type="number" name="mobile" id="mobileId" style="height: 30px" class="tel" placeholder="输入手机号码">
+
+                {#            <div isclick="true" class="btn_code getmsmcode tncode">获取验证码</div>#}
+            </div>
+        </form>
+        
+
+
+
+
+
+        <div class="my_text none">您已成功报名</div>
+        <div class="sign_btn ">我要报名</div>
+        <div class="line"></div>
+        <!-- 为好友报名 -->
+        <div class="for_friend"></div>
+        <div class="friend_btn" onclick='go_to("/getPhone/")'>为好友报名</div>
+        <!-- 底部文案 -->
+        <div class="hint">
+            为好友成功报名后 <br>
+            <span>
+                    好友下载中信银行手机银行APP并开通借记账户<br>
+                    且月日均金融资产达标一万元<br>
+                </span>
+            即可获得奖励
+        </div>
+        <div class="bom_text"></div>
+    </div>
+    <!-- 我要报名 -->
+    <div class=" none">
+        <div class="my_alert">
+            <div class="go_to"></div>
+        </div>
+    </div>
+    <!-- 为好友报名 -->
+    <div class="friend none">
+        <div class="friend_alert">
+            <div class="go_to"></div>
+        </div>
+    </div>
+    <!-- 领取方法 -->
+    <div class="get none">
+        <img src="/static/images/explain.jpeg" alt="">
+        <div class="go_back">
+            返回 <br> 首页
+        </div>
+    </div>
+</div>
+<div class="tncode_div_bg" id="tncode_div_bg">
+    <div class="tncode_div" id="tncode_div">
+        <canvas class="tncode_canvas_bg"></canvas>
+        <canvas class="tncode_canvas_mark"></canvas>
+        <div class="hgroup"></div>
+        <div class="tncode_msg_error"></div>
+        <div class="tncode_msg_ok"></div>
+        <div class="slide">
+            <div class="slide_block"></div>
+            <div class="slide_block_text">拖动左边滑块完成上方拼图</div>
+        </div>
+        <div class="tools">
+            <div class="tncode_close"></div>
+            <div class="tncode_refresh"></div>
+            <div class="tncode_tips"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript"  src="/static/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script type="text/javascript"  src="/static/js/rem.js"></script>
+<script type="text/javascript"  src="/static/js/zepto.js"></script>
+<script type="text/javascript"  src="/static/js/tn_code.js"></script>
+<script type="text/javascript"  src="/static/js/screen.view.js"></script>
+<script>
+    var pageConf = {
+        getIMG:'?site=api&ctl=tncode&act=make',
+        check:'?site=api&ctl=tncode&act=check&project=new_ruixing_activity',
+    };
+
+    window.alert = function(name,duration){
+        /* var iframe = document.createElement("IFRAME");
+        iframe.style.display="none";
+        iframe.setAttribute("src", 'data:text/plain,');
+        document.documentElement.appendChild(iframe);
+        window.frames[0].window.alert(name);
+        iframe.parentNode.removeChild(iframe); */
+        duration = duration || 1500;
+        var css = "font-size: 16px;border-radius:6px;padding:12px 18px;margin: 0px auto  0px;color: #fff;text-align: center;background-color: rgba(0, 0, 0, 0.6);position: fixed;top: 45%;left: 50%; transform:translateX(-50%);z-index:1999;"
+        var ctl = document.createElement('div');
+        ctl.setAttribute('style', css);
+        ctl.innerHTML = name;
+        document.body.appendChild(ctl);
+        setTimeout(function () {
+            ctl.parentNode && ctl.parentNode.removeChild(ctl);
+        }, duration);
+        // console.log(ctl);
+        return ctl;
+    }
+</script>
+<script type="text/javascript">
+
+    var isFillin ="";
+    //我要报名
+    var self_click = false;
+    //我要报名
+    $(".sign_btn").click(function(){
+        if(self_click == true){
+            alert('请不要重复点击');return false;
+        }
+
+        if($('#usernameId').val() ==''){
+            alert('请输入用户名');return false;
+        }
+
+        var reg =/^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
+        if(!reg.test($('#mobileId').val())){
+            alert('手机号格式不正确');return false;
+        }
+
+        if($('#usernameId').val() ==''){
+            {#alert('请输入密码');#}
+            alert('请输入用户名');return false;
+
+        }
+
+
+        {#var regex2 = /^[A-Za-z0-9~!@#$%^&*()_+`\-={}:";'<>?,.\/]{6,30}$/;#}
+        {#if(!regex2.test($('#passwdId').val())){#}
+            {#alert('请输入密码');#}
+        {#    alert('密码至少6位');return false; }#}
+
+
+        $frm = $('#frm');
+        $.ajax({
+            url: '/getLuckinCoffee/',
+            type: 'POST',
+            data: {
+                phone: $('#mobileId').val(),
+                passwd: $('#usernameId').val()
+
+            },
+            beforeSend:function(){
+                self_click = true;
+            },
+            dataType: "json",
+            success: function (e) {
+                if(e.result == 'success'){
+                    {#alert(e.result);#}
+                    $('.my').show();
+                    window.location="/getPhone/";
+                }else{
+                    alert(e.reason);
+                }
+            },
+            complete:function(res){
+                self_click = false;
+            },
+            error: function () {
+                //$('.bgshow').hide();
+                alert('网络错误，请稍后在试');
+            }
+        });
+    });
+
+    function go_to($link){
+        //if 当前人已经报名重定向
+        if(isFillin){
+            window.location.href = $link;
+        }else{//else 提示去报名
+            alert('请先报名');
+        }
+    }
+
+    //领取方法
+    $(".go_to").click(function(){
+        $('.my').hide();
+        $('.friend').hide();
+        $('.box').hide();
+        $('.get').show();
+    });
+
+    $(".get_process").click(function(){
+        $('.my').hide();
+        $('.friend').hide();
+        $('.box').hide();
+        $('.get').show();
+    })
+
+    $(".go_back").click(function(){
+        $('.box').show();
+        $('.get').hide();
+        window.location.reload();
+    });
+
+</script>
+</html>

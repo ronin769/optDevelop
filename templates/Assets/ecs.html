@@ -1,0 +1,483 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 80px">ECS</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="privateIpAddressId" name="privateIpAddress" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 80px">SLB</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="slbIpId" name="slbIp" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 80px">项目 </label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="projectNameId" name="projectName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 80px">描述</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="descriptionId" name="description" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px">EIP</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="eipAddressId" name="eipAddress" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+
+
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+
+
+    </div>
+</div>
+
+
+{#新增防火墙弹窗#}
+<div class="site-text" style="width:98%; height:450px; margin: 30px 20px 30px 20px;  overflow:auto; display: none" id="addECSOpenFormId"  target="test123">
+
+    <div class="layui-form" id="myFormId" method="post" lay-filter="myFormFilter">
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">V2ECS</label>
+            <textarea class="layui-textarea layui-form-label" style="width: 550px; height: 100px" name="addV2Ecs" id="addV2EcsId" placeholder="json格式"></textarea>
+            <button class="layui-btn layui-btn-normal layui-form-label" type="button" id="addV2EcsBtnId" lay-submit="" lay-filter="addV2EcsBtnFilter"  >立即提交</button>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">V2SLB</label>
+            <textarea class="layui-textarea layui-form-label" style="width: 550px; height: 100px" name="addV2Ecs" id="addV2SlbId" placeholder="json格式"></textarea>
+            <button class="layui-btn layui-btn-normal layui-form-label" type="button" id="addV2SlbBtnId" lay-submit="" lay-filter="addV2SlbBtnFilter"  >立即提交</button>
+        </div>
+
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">V3ECS</label>
+            <textarea class="layui-textarea layui-form-label" style="width: 550px; height: 100px" name="addV3Ecs" id="addV3EcsId" placeholder="json格式"></textarea>
+            <button class="layui-btn layui-btn-normal layui-form-label" type="button" id="addV3EcsBtnId" lay-submit="" lay-filter="addV3EcsBtnFilter"  >立即提交</button>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">V3SLB</label>
+            <textarea class="layui-textarea layui-form-label" style="width: 550px; height: 100px" name="addV3Ecs" id="addV3SlbId" placeholder="json格式"></textarea>
+            <button class="layui-btn layui-btn-normal layui-form-label" type="button" id="addV3SlbBtnId" lay-submit="" lay-filter="addV3SlbBtnFilter"  >立即提交</button>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+
+
+        <button class="layui-btn layui-btn-sm data-add-btn" href="javascript:;" data-title="新增ECS" data-icon="fa fa-gears" lay-event="addECSEvent">
+            <i class="layui-icon">&#xe608;</i>
+            新增ECS
+        </button>
+
+
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+
+
+{#        <button type="button" class="layui-btn layui-btn-sm  layui-btn-normal data-download-btn" id="downloadEcsTemplateFileId" name="downloadEcsTemplateFile">#}
+{#            <a href="/Assets/downloadEcsTemplateFile/" style="color: white; ">#}
+{#                <i class="layui-icon">&#xe601;</i>#}
+{#                下载模板#}
+{#            </a>#}
+{#        </button>#}
+{#        <button type="button" class="layui-btn layui-btn-sm" id="selectFileId" name="selectFile">选择文件（ecsAssets.xls）</button>#}
+{#        <button type="button" class="layui-btn layui-btn-sm" id="startUploadId" name="startUpload">#}
+{#            <i class="layui-icon">&#xe681;</i>#}
+{#            开始上传#}
+{#        </button>#}
+{##}
+{#        <button class="layui-btn layui-btn-sm data-init-btn layui-btn-normal" href="javascript:;" data-title="初始化" data-icon="fa fa-gears">#}
+{#            <i class="layui-icon">&#xe639;</i>#}
+{#            初始化#}
+{#        </button>#}
+{#        <button class="layui-btn layui-btn-sm data-delete-btn layui-btn-danger">#}
+{#            <i class="layui-icon">&#xe640;</i>#}
+{#            全部删除#}
+{#        </button>#}
+{##}
+{#        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="downloadAll">#}
+{#            <a href="/Assets/downloadEcsAllToFile/" style="color: white; font-size: 12px">#}
+{#                <i class="layui-icon">&#xe641;</i>#}
+{#                批量下载#}
+{#        </button>#}
+
+
+    </div>
+</script>
+
+
+
+
+<script>
+    layui.use(['form', 'layer', 'table', 'upload'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload;
+
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'Assets/getEcsList/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-tips'
+            }]
+            {#,initSort: {field:'cnvdNumber', type:'desc'}#}
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type: 'numbers', title: '序号', align:"center", sort: true,fixed: 'left',width:80,}
+
+                ,{field:'privateIpAddress', title:'privateIpAddress', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'slbIp', title:'slbIp', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'slbport', title:'slbport', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'projectName', title:'projectName', width:240, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'description', title:'description', width:300, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'domain', title:'domain', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'systemName', title:'systemName', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'accessURL', title:'accessURL', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'businessPeople', title:'businessPeople', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'DevelopPeople', title:'DevelopPeople', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'eipAddress', title:'eipAddress', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+
+                ,{field:'natIpAddress', title:'natIpAddress', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'instanceId', title:'instanceId', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'instanceName', title:'instanceName', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'loadBalancerId', title:'loadBalancerId', width:120, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'loadBalancerName', title:'loadBalancerName', width:120, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'slbStatus', title:'slbStatus', width:120, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'networkType', title:'networkType', width:120, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'startTime', title:'startTime', width:200, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'physicalHostName', title:'physicalHostName', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'projectId', title:'projectId', width:120, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'regionId', title:'regionId', width:200, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'securityGroupIdList', title:'securityGroupIdList', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vpcId', title:'vpcId', width:150, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'createTime', title:'createTime', width:200, event: 'getEcsSLBIP', align:'center', sort: true, totalRowText: 'text'}
+
+
+                {#,{field:'addressComment', title:'地址描述', width:500, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{fixed:'right', title:'操作', width:200, align:'center', toolbar: '#optionToolbar',totalRow: true}#}
+
+                {#,{fixed:'cveDiscovererName', field:'发现人', title:'漏洞状态', width:85, templet: '#switchStatus', unresize: true}#}
+                {#,{fixed:'cveReferenceLink', field:'vulOption', title:'是否处理', width:110, templet: '#checkboxOption', unresize: true}#}
+
+            ]]
+            ,limits: [10, 50, 100, 300, 500, 1000, 1500, 2000]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,page: true
+            ,title: 'ECS-SLB-域名对应表'
+
+        });
+
+
+
+
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            {#var seatchParse = $('.layui-input').val();#}
+            var privateIpAddress = $('#privateIpAddressId').val();
+            var slbIp = $('#slbIpId').val();
+            var projectName = $('#projectNameId').val();
+            var description = $('#descriptionId').val();
+            var eipAddress = $('#eipAddressId').val();
+
+            var massage = layer.msg('查询中，请稍后...');
+            table.reload('currentTableId', {
+                url: 'Assets/searchECS/'
+                ,methods:"post"
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    privateIpAddress : privateIpAddress
+                    ,slbIp : slbIp
+                    ,projectName : projectName
+                    ,description : description
+                    ,eipAddress : eipAddress
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            layer.close(massage)
+        });
+
+
+
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#selectFileId'
+            ,url: 'Assets/uploadecsfile/'
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            ,bindAction: '#startUploadId'
+            ,accept: 'file' //允许上传的文件类型
+            {#,acceptMime: 'text/plain'#}
+            {#,ext: 'log|txt'#}
+            {#,acceptMime: 'text/*'#}
+            {#,size: 50 //最大允许上传的文件大小#}
+            {#,before:function(obj){#}
+            {#    obj.preview(function(index, file, result){#}
+            {#        alert(file.name);#}
+            {#    });#}
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+            }
+
+            ,done: function(res, index, upload){
+                if (res.code == 0){
+                    layer.closeAll('loading'); //关闭loading
+                    layer.alert("上传成功");
+                }
+            }
+        });
+
+
+
+
+        //头工具栏事件
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+
+
+                // 监听头工具初始化操作  请确认是否初始化
+                case 'addECSEvent':
+                    layer.open({
+                        type: 1 //Page层类型
+                        ,skin: 'layui-layer-molv'
+                        ,area: ['auto']
+                        ,closeBtn: 1 //显示关闭按钮
+                        ,title: ['编辑资产信息','font-size:16px']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,maxmin: true //允许全屏最小化
+                        ,offset: "70px"
+                        ,btn: ["取消"]
+                        ,content:$("#addECSOpenFormId")  //弹窗路径
+
+
+                    });
+                    break;
+
+
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+        });
+
+
+
+        //弹出层提交新增策略按钮
+        form.on('submit(addV2EcsBtnFilter)', function (data) {
+            $.ajax({
+                url: '/Assets/addV2EcsSubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    addV2Ecs: $('#addV2EcsId').val()
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+
+            });
+        });
+
+
+
+
+        //弹出层提交新增IP组按钮
+        form.on('submit(addV2SlbBtnFilter)', function (data) {
+            $.ajax({
+                url: '/Assets/addV2SlbSubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    addV2Slb: $('#addV2SlbId').val()
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+
+            });
+        });
+
+
+
+        //弹出层提交新增策略按钮
+        form.on('submit(addV3EcsBtnFilter)', function (data) {
+            $.ajax({
+                url: '/Assets/addV3EcsSubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    addV3Ecs: $('#addV3EcsId').val()
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+
+            });
+        });
+
+
+
+
+        //弹出层提交新增IP组按钮
+        form.on('submit(addV3SlbBtnFilter)', function (data) {
+            $.ajax({
+                url: '/Assets/addV3SlbSubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    addV3Slb: $('#addV3SlbId').val()
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("修改成功",{
+                            icon:1
+                            ,title:'提示'
+                            ,yes: function(index, layero){
+                                layer.close(index);
+                            }
+                        });
+
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+
+            });
+        });
+
+
+        
+
+
+
+
+
+    });
+</script>

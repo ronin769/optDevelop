@@ -1,0 +1,641 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">名称</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="vulnNameId" name="vulnName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">urgent</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="urgentId" name="urgent" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">assetId</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="assetIdId" name="assetId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">assetPublicIP</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="assetPublicIPId" name="assetPublicIP" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 90px">CVEID</label>
+                            <div class="layui-input-inline" style="width: 150px">
+                                <input type="text" id="CVEIDId" name="CVEID" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-inline">
+                            <a class="layui-btn" id="searchHostVulnId" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+    </div>
+</div>
+
+
+
+{#添加按钮弹窗#}
+<div class="site-text" style="width:900px; height:600px; margin: 30px 20px 30px 20px;  overflow:auto; display: none" id="addHostVulnOpenFormId"  target="test123">
+
+    <form class="layui-form" id="myFormId" method="post" lay-filter="myFormFilter">
+
+
+        <div class="layui-form-item">
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">漏洞名称<span style="color: #FF0000; ">*</span></label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="vulnNameOpen" id="vulnNameOpenId" lay-verify="required" lay-reqtext="项目名称是必填项，不能为空" placeholder="项目名称" autocomplete="off" class="layui-input">                    </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label ">紧急度</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="urgentOpen" id="urgentOpenId" lay-verify="pass" lay-reqtext="项目描述是必填项，不能为空" placeholder="项目描述" autocomplete="off" class="layui-input">                    </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" >资产ID</label>
+                <div class="layui-input-inline"  style="width: 300px">
+                    <input type="text" name="assetIdOpen" id="assetIdOpenId" lay-verify="pass" placeholder="业务联系人" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">EIP</label>
+                <div class="layui-input-inline"  style="width: 300px">
+                    <input type="text" name="assetPublicIPOpen" id="assetPublicIPOpenId" lay-verify="pass" placeholder="业务联系方式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">ECSIP</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="assetPrivateIPOpen" id="assetPrivateIPOpenId" lay-verify="pass"  placeholder="开发联系人" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">资产备注</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="assetRemarksOpen" id="assetRemarksOpenId" lay-verify="pass"  placeholder="开发联系方式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">首次发现</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="firstFindTimeOpen" id="firstFindTimeOpenId" lay-verify="pass"  placeholder="开发联系人" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">最近发现</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="lastFindTimeOpen" id="lastFindTimeOpenId" lay-verify="pass"  placeholder="开发联系方式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">漏洞状态</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="vulnStatusOpen" id="vulnStatusOpenId" lay-verify="pass"  placeholder="开发联系人" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" name="labelOpen" id="labelOpenId" lay-verify="pass"  placeholder="开发联系方式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">CVE编号</label>
+            <div class="layui-input-block" style="width: 735px">
+                <textarea placeholder="请输入内容" name="CVEIDOpen" id="CVEIDOpenId" placeholder="描述信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">漏洞说明</label>
+            <div class="layui-input-block" style="width: 735px">
+                <textarea placeholder="请输入内容" name="vulnExplainOpen" id="vulnExplainOpenId" placeholder="描述信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">修复命令</label>
+            <div class="layui-input-block" style="width: 735px">
+                <textarea placeholder="请输入内容" name="repairCommandOpen" id="repairCommandOpenId" placeholder="描述信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+{#        <div class="layui-form-item " style="text-align:center">#}
+{#            <div class="layui-input-block ">#}
+{#                <button class="layui-btn" type="button" id="addHostVulnSubmitOpenFormId" lay-submit="" lay-filter="addHostVuln-btn-OpenForm-Filter" style="margin-right: 10px" >立即提交</button>#}
+{#                <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 10px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>#}
+{#                <button type="button" class="layui-btn layui-btn-warm" id="addHostVulnCancleId" lay-submit="" lay-filter="addHostVulnCancleOpenForm-Filter"  style=" margin-right: 150px"> &nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp; </button>#}
+{#            </div>#}
+{#        </div>#}
+
+    </form>
+
+
+</div>
+
+
+
+
+
+<script type="text/html" id="optionToolbar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+{#    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>#}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="selectToolbar">
+    <div class="layui-btn-container">
+{#        <button class="layui-btn layui-btn-sm data-add-btn" href="javascript:;" data-content-href="HostVuln/addHostVulnpage/" data-title="基本资料" data-icon="fa fa-gears">#}
+{#            <i class="layui-icon">&#xe608;</i>#}
+{#            新增数据#}
+{#        </button>#}
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+
+        <button type="button" class="layui-btn layui-btn-sm data-download-btn layui-btn-normal" id="downloadHostVulnTemplateFileId" name="downloadHostVulnTemplateFile">
+            {#                    <a href="/HostVuln/downloadHostVulnTemplateFile/" style="color: blue; font-size: 14px">#}
+            <a href="/HostVuln/downloadHostVulnTemplateFile/" style="color: white; font-size: 12px">
+                <i class="layui-icon">&#xe601;</i>
+                下载模板
+            </a>
+        </button>
+        <button type="button" class="layui-btn layui-btn-sm" id="selectFileId" name="selectFile">选择文件（HostVuln.xls）</button>
+        <button type="button" class="layui-btn layui-btn-sm" id="startUploadId" name="startUpload">
+            <i class="layui-icon">&#xe681;</i>
+            开始上传
+        </button>
+
+        <button class="layui-btn layui-btn-sm layui-btn-normal" href="javascript:;" data-title="初始化" data-icon="fa fa-gears" lay-event="initHostVuln">
+            <i class="layui-icon">&#xe639;</i>
+            初始化
+        </button>
+
+        <button class="layui-btn layui-btn-sm data-delete-btn layui-btn-danger" lay-event="deleteAll">
+            <i class="layui-icon">&#xe640;</i>
+            全部删除
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="downloadAll">
+            <a href="/HostVuln/downloadHostVulnAllToFile/" style="color: white; font-size: 12px">
+            <i class="layui-icon">&#xe641;</i>
+            批量下载(带联系人)
+        </button>
+
+
+
+    </div>
+</script>
+
+
+
+<script>
+
+
+
+    layui.use(['form', 'layer', 'table', 'upload', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            layer = layui.layer;
+
+        table.render({
+            elem: '#currentTableId'
+            ,url: 'HostVuln/getHostVulnlist/'
+            ,toolbar: '#selectToolbar'//开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-tips'
+            }]
+            {#,initSort: {field:'cnvdNumber', type:'desc'}#}
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type: 'numbers', title: '序号', align:"center", sort: true,fixed: 'left',width:80,}
+
+                ,{field:'vulnName', title:'漏洞名称', width:200, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'urgent', title:'等级', width:80, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'assetId', title:'资产ID', width:200, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'assetPublicIP', title:'assetPublicIP', width:140, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'assetPrivateIP', title:'assetPrivateIP', width:120, align:'center', sort: true, totalRowText: 'text'}
+                {#,{field:'projectName', title:'projectName', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'description', title:'description', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'domain', title:'domain', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'systemName', title:'systemName', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'slbIp', title:'slbIp', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'businessPeople', title:'businessPeople', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+                {#,{field:'DevelopPeople', title:'DevelopPeople', width:120, align:'center', sort: true, totalRowText: 'text'}#}
+
+
+                ,{field:'assetRemarks', title:'资产备注', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'firstFindTime', title:'首次发现时间', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'lastFindTime', title:'最近一次发现时间', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnExplain', title:'漏洞说明', width:300, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'vulnStatus', title:'漏洞状态', width:160, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'repairCommand', title:'修复命令', width:300, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'CVEID', title:'CVE编号', width:300, align:'center', sort: true, totalRowText: 'text'}
+                ,{field:'label', title:'标签', width:300, align:'center', sort: true, totalRowText: 'text'}
+
+                ,{fixed:'right', title:'操作', width:200, align:'center', toolbar: '#optionToolbar',totalRow: true}
+
+            ]]
+            ,limits: [10, 50, 100, 300, 500, 1000, 3000, 5000, 10000, 30000, 50000]
+            {#需要在后台一起处理#}
+            ,limit: 13
+            ,page: true
+            ,title: '项目名联系表'
+
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+
+            var vulnName = $('#vulnNameId').val();
+            var urgent = $('#urgentId').val();
+            var assetId = $('#assetIdId').val();
+            var assetPublicIP = $('#assetPublicIPId').val();
+            var CVEID = $('#CVEIDId').val();
+
+            table.reload('currentTableId', {
+                url: 'HostVuln/searchHostVuln/'
+                {#,methods:"post"#}
+                ,request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limit: 'limit' //每页数据量的参数名，默认：limit
+                }
+                ,where: {
+                    vulnName : vulnName
+                    ,urgent : urgent
+                    ,assetId : assetId
+                    ,assetPublicIP : assetPublicIP
+                    ,CVEID : CVEID
+                }
+                ,page: {
+                    curr: 1
+                }
+            });
+            {#return false;#}
+        });
+
+
+
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#selectFileId'
+            ,url: 'HostVuln/uploadHostVulnfile/'
+            ,auto: false            //是否选完文件后自动上传
+            //,multiple: true       //是否允许多文件上传
+            ,bindAction: '#startUploadId'
+            ,accept: 'file' //允许上传的文件类型
+            {#,acceptMime: 'text/plain'#}
+            {#,ext: 'log|txt'#}
+            {#,acceptMime: 'text/*'#}
+            {#,size: 50 //最大允许上传的文件大小#}
+            {#,before:function(obj){#}
+            {#    obj.preview(function(index, file, result){#}
+            {#        alert(file.name);#}
+            {#    });#}
+
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.load(); //上传loading
+            }
+
+            ,done: function(res, index, upload){
+                if (res.code == 0){
+                    layer.closeAll('loading'); //关闭loading
+                    layer.alert("上传成功",{
+                        icon:1
+                        ,title:'提示'
+                    });
+                }
+            }
+        });
+
+
+
+
+
+
+        //头工具栏事件  未全选
+        table.on('toolbar(currentTableFilter)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+                // 监听头工具删除操作  请确认是否全部删除
+                case 'deleteAll':
+                    layer.alert("请确认是否全部删除",{
+                        icon: 7
+                        ,title: '提示'
+                        ,btn: ['全部删除', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/HostVuln/deleteHostVulnall/',{
+                                deleteAll: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('全部删除成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+
+
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                // 监听头工具初始化操作  请确认是否初始化
+                case 'initHostVuln':
+                    layer.alert("请确认是否初始化",{
+                        icon: 3
+                        ,title: '提示'
+                        ,btn: ['初始化', '取消']
+                        ,shadeClose: true
+                        ,shade: 0 //遮罩透明度
+                        ,yes:function(index, layero){
+                            $.post('/HostVuln/initHostVuln/',{
+                                init: "yes"
+                            },function(data){
+                                //根据后台返回的参数，来进行判断
+                                if(data == "success"){
+                                    layer.alert('初始化成功',{
+                                        icon:1
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }else{
+                                    layer.alert(data,{
+                                        icon:2
+                                        ,title:'提示'
+                                    },function(i){
+                                        layer.close(i);
+                                        layer.close(index);//关闭弹出层
+                                        {#$("#book")[0].reset()//重置form#}
+                                    });
+                                    table.reload('currentTableId',{//重载表格
+                                        page:{
+                                            curr:1
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                        ,btn2: function(index, layero){
+                            layer.close(index);//关闭弹出层
+                        }
+                    });
+                    break;
+
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+
+
+        //监听行工具事件  查看资产信息
+        table.on('tool(currentTableFilter)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据（json格式的键值对）
+                {#,layEvent = obj.event //获得 lay-event 对应的值（编辑、删除、添加）#}
+                ,editList=[]; //存放获取到的那条json数据中的value值（不放key）
+            $.each(
+                data,function(name,value) {//循环遍历json数据
+                    editList.push(value);
+                    //将json数据中的value放入数组中（下面的子窗口显示的时候要用到）
+                });
+
+            if(obj.event === 'detail'){
+                {#layer.msg('HostVuln：'+ data.HostVuln + ' 的查看操作');#}
+
+                layer.open({
+                    type: 1 //Page层类型
+                    ,skin: 'layui-layer-molv'
+                    ,scrollbar: true
+                    ,area: ['auto']
+                    ,maxHeight: "400px"
+                    ,closeBtn: 1 //显示关闭按钮
+                    ,title: ['查看资产信息','font-size:16px']
+                    {#,btn: ['关闭']#}
+                    ,shadeClose: true
+                    ,shade: 0 //遮罩透明度
+                    ,maxmin: true //允许全屏最小化
+                    ,content:$("#addHostVulnOpenFormId")  //弹窗路径
+                    ,offset: "70px"
+
+
+                    ,success:function(layero){
+
+
+                        {#var btn = layero.find('.layui-layer-btn');#}
+                        {#btn.css('text-align', 'center');#}
+                        $('#vulnNameOpenId').val(data.vulnName);
+                        $('#urgentOpenId').val(data.urgent);
+                        $('#assetIdOpenId').val(data.assetId);
+                        $('#assetPublicIPOpenId').val(data.assetPublicIP);
+                        $('#assetPrivateIPOpenId').val(data.assetPrivateIP);
+                        $('#assetRemarksOpenId').val(data.assetRemarks);
+                        $('#firstFindTimeOpenId').val(data.firstFindTime);
+                        $('#lastFindTimeOpenId').val(data.lastFindTime);
+                        $('#vulnExplainOpenId').val(data.vulnExplain);
+                        $('#vulnStatusOpenId').val(data.vulnStatus);
+                        $('#repairCommandOpenId').val(data.repairCommand);
+                        $('#CVEIDOpenId').val(data.CVEID);
+                        $('#labelOpenId').val(data.label);
+
+
+                        {## 初始化表单，要加上，不然刷新部分组件可能会不加载#}
+                        form.render();
+
+
+                    },yes:function(i){
+                        layer.close(i);
+                        layer.close(index);//关闭弹出层
+                        {#$("#book")[0].reset()//重置form#}
+                        table.reload('currentTableId', {//重载表格
+                            page: {
+                                curr: 1
+                            }
+                        })
+                    }
+
+                });
+
+
+            } else if(obj.event === 'del'){
+                layer.msg('hostVuln：'+ data.hostVuln + ' 的删除操作');
+                obj.del();
+                {#layer.close(index);#}
+                layer.confirm('您确定要删除该域名吗?',{btn: ['确定', '取消'],icon:7,title:"提示"}, function(){
+                    $.post('/HostVuln/deleteHostVulnforline/',{
+                        delete: "yes"
+                        ,vulnName: data.vulnName
+                        ,assetId: data.assetId
+                        ,assetPublicIP: data.assetPublicIP
+                        ,assetRemarks: data.assetRemarks
+                    },function(data){
+                        //根据后台返回的参数，来进行判断
+                        if(data == "success"){
+                            layer.alert('删除成功',{
+                                icon:1
+                                ,title:'提示'
+                            },function(i){
+                                layer.close(i);
+                                layer.close(index);//关闭弹出层
+                                {#$("#currentTableId")[0].reset()//重置form#}
+                            });
+                            table.reload('currentTableId',{//重载表格
+                                page:{
+                                    curr:1
+                                }
+                            })
+                        }
+                    });
+
+
+                });
+
+            }
+
+        });
+
+
+
+
+
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+
+
+    });
+</script>

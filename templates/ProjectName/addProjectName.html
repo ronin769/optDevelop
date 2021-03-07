@@ -1,0 +1,296 @@
+<div class="layuimini-container" xmlns="http://www.w3.org/1999/html">
+    <div class="layuimini-main">
+
+        </br>
+
+        {#        <fieldset class="layui-elem-field layuimini-search">#}
+        {#            <legend>搜索信息</legend>#}
+        {#            <div style="margin: 10px 10px 10px 10px">#}
+        {#                <form class="layui-form layui-form-pane" action="">#}
+        {#                    <div class="layui-form-item">#}
+        {#                        <div class="layui-inline">#}
+        {#                            <label class="layui-form-label" style="width: 90px">部门</label>#}
+        {#                            <div class="layui-input-inline" style="width: 110px">#}
+        {#                                <input type="text" id="departmentNameId" name="departmentName" autocomplete="off" class="layui-input">#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                        #}
+        {#                        <div class="layui-inline">#}
+        {#                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </form>#}
+        {#            </div>#}
+        {#        </fieldset>#}
+
+{#        </br>#}
+{#        </br>#}
+
+
+
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend >新增资产</legend>
+            </br>
+            <form class="layui-form  layui-input-block" lay-filter="myFormFilter" onsubmit="return false;" action="#" method="get" id="myFormId">
+
+
+                <div class="layui-form-item">
+
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">项目名称<span style="color: #FF0000; ">*</span></label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <input type="text" name="projectName" id="projectNameId" lay-verify="required" lay-reqtext="项目名称是必填项，不能为空" placeholder="项目名称" autocomplete="off" class="layui-input">                    </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">项目描述</label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <input type="text" name="projectDesc" id="projectDescId" lay-verify="pass" lay-reqtext="项目描述是必填项，不能为空" placeholder="项目描述" autocomplete="off" class="layui-input">                    </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" >业务联系人</label>
+                        <div class="layui-input-inline"  style="width: 300px">
+                            <input type="text" name="businessPeople" id="businessPeopleId" lay-verify="pass" placeholder="业务联系人" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">联系方式</label>
+                        <div class="layui-input-inline"  style="width: 300px">
+                            <input type="text" name="businessPhone" id="businessPhoneId" lay-verify="pass" placeholder="业务联系方式" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开发联系人</label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <input type="text" name="developPeople" id="developPeopleId" lay-verify="pass"  placeholder="开发联系人" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label layui-input-block">联系方式</label>
+                        <div class="layui-input-inline" style="width: 300px">
+                            <input type="text" name="developPhone" id="developPhoneId" lay-verify="pass"  placeholder="开发联系方式" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开发单位</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentCompany" id="developmentCompanyId" lay-verify="pass"  placeholder="开发单位" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="common" id="commonId" placeholder="描述信息" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+
+
+
+
+
+                {#                <div class="layui-form-item layui-form-text">#}
+                {#                  <label class="layui-form-label">编辑器</label>#}
+                {#                  <div class="layui-input-block">#}
+                {#                    <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>#}
+                {#                  </div>#}
+                {#                </div>#}
+                <div class="layui-form-item " style="text-align:center">
+                    <div class="layui-input-block ">
+                        {#                        <button type="button" class="layui-btn" onclick="addProjectNamemsg()" lay-filter="addProjectName-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        {#                        <button class="layui-btn" lay-filter="addProjectName-btn-Filter" style="margin-right: 150px">立即提交</button>#}
+                        <button class="layui-btn" id="addProjectNameSubmitId" type="button" style="margin-right: 150px">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-normal" style="margin-right: 200px"> &nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp; </button>
+                    </div>
+                </div>
+            </form>
+
+        </fieldset>
+
+
+        <!-- 示例-970 -->
+        {#        <ins class="adsbygoogle" style="width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery
+            , form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        {#var editIndex = layedit.build('LAY_demo_editor');#}
+
+        {#//自定义验证规则#}
+        {#form.verify({#}
+        {#    required: function (value) {#}
+        {#        if (value.length < 5) {#}
+        {#            return '标题至少得5个字符啊'; }}#}
+        {#    , pass: [#}
+        {#        /^[\S]{6,12}$/#}
+        {#        , '密码必须6到12位，且不能出现空格' ]#}
+        {#    , title: function (value) {#}
+        {#        layedit.sync(editIndex);}});#}
+
+        //系统状态开关
+        form.on('switch(systemStatusFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '该域名有效' : '该域名已下线'), {
+                offset: '6px'});
+            if(this.checked){
+                layer.tips('该域名有效', data.othis)
+            }else{
+                layer.tips('该域名已下线', data.othis)
+
+            }
+        });
+
+
+        //外网访问开关
+        form.on('switch(extranetAccessFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '开放互联网访问' : '仅本地访问'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('开放互联网访问', data.othis)
+            }else{
+                layer.tips('仅广安、人济等本地访问', data.othis)
+            }
+
+        });
+
+        //是否脱敏开关
+        form.on('switch(isdesensitizationFilter)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? '已脱敏' : '未脱敏'), {
+                offset: '6px'});
+
+            if(this.checked){
+                layer.tips('已脱敏', data.othis)
+            }else{
+                layer.tips('未脱敏', data.othis)
+            }
+
+        });
+
+
+
+
+
+
+
+        //监听提交
+        $("#addProjectNameSubmitId").on("click", function () {
+
+            {#layer.alert("123156");#}
+            $.ajax({
+                url: '/ProjectName/addProjectNamesubmit/',
+                type: 'post',
+                dataType: 'json', //预期返回类型
+                data: {
+                    projectName: $('#projectNameId').val(),
+                    projectDesc: $('#projectDescId').val(),
+                    businessPeople: $('#businessPeopleId').val(),
+                    businessPhone: $('#businessPhoneId').val(),
+                    developPeople: $('#developPeopleId').val(),
+                    developPhone: $('#developPhoneId').val(),
+                    developmentCompany: $('#developmentCompanyId').val(),
+                    common: $('#commonId').val(),
+                },
+                success:function(data){
+                    if(data == "success"){
+
+                        layer.alert("添加成功",{ icon:1,title:'提示'},function(index){
+                            layer.close(index);
+                            {#window.parent.location.reload(); //刷新父页面#}
+                            window.location = ("/#/ProjectName/projectName/");
+
+                        });
+                    }else{
+                        layer.alert(data,{ icon:2,title:'提示'},function(index){ layer.close(index);});
+                    }
+                },
+
+            });
+
+            return false;
+        });
+
+        //表单初始赋值
+        form.val('myFormFilter', {
+            "departmentName": "上海" // "name": "value"
+            , "systemName": "测试系统"
+            , "domain": "www.test.com"
+            , "systemType": "APP应用系统"
+            , "systemStatus": true
+            , "accessURL": "url" //复选框选中状态
+            , "developmentCompany": "科东"
+            , "extranetAccess": true
+            , "businessPeople": "businessPeople"
+            , "businessPhone": "businessPhone"
+            , "DevelopPeople": "DevelopPeople"
+            , "DevelopPhone": "DevelopPhone"
+            , "systemDescribe": "systemDescribe"
+            , "systemUsername": "systemUsername"
+            , "systemPassword": "systemPassword"})
+
+
+
+
+
+    });
+
+
+
+    {#window.onload = function () {#}
+    {#    var submit = document.getElementById("addProjectNameSubmitId");#}
+    {#    submit.onclick = function(event){#}
+    {#        alert("不提交");#}
+    {#        return false;#}
+    {#    };    }#}
+
+
+
+</script>

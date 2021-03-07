@@ -1,0 +1,279 @@
+<div class="layuimini-container">
+    <div class="layuimini-main">
+{#        <script src="/static/lib/layui-v2.5.4/layui.js?v=1.0.4" charset="utf-8"></script>#}
+{#        <script src="/static/js/lay-config.js?v=1.0.4" charset="utf-8"></script>#}
+        <!-- 示例-970 -->
+{#        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>#}
+        <ins class="adsbygoogle" style="display:inline-block;width:970px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>新增漏洞信息</legend>
+        </fieldset>
+
+        <form class="layui-form" action="" lay-filter="formText">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漏洞编号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="vulNum" lay-verify="title" autocomplete="off" placeholder="cve-2017-0146" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漏洞名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="vulName" lay-verify="title" autocomplete="off" placeholder="永恒之蓝" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漏洞类型</label>
+                <div class="layui-input-block">
+                    <input type="text" name="vulType" lay-verify="title" placeholder="缓冲区溢出" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+{#            <div class="layui-form-item">#}
+{#                <label class="layui-form-label">漏洞类型</label>#}
+{#                <div class="layui-input-block">#}
+{#                    <select name="interest" lay-filter="aihao">#}
+{#                        <option value=""></option>#}
+{#                        <option value="0">写作</option>#}
+{#                        <option value="1">阅读</option>#}
+{#                        <option value="2">游戏</option>#}
+{#                        <option value="3">音乐</option>#}
+{#                        <option value="4">旅行</option>#}
+{#                    </select>#}
+{#                </div>#}
+{#            </div>#}
+
+{#            <div class="layui-form-item">#}
+{#                <label class="layui-form-label">复选框</label>#}
+{#                <div class="layui-input-block">#}
+{#                    <input type="checkbox" name="like[write]" title="写作">#}
+{#                    <input type="checkbox" name="like[read]" title="阅读">#}
+{#                    <input type="checkbox" name="like[daze]" title="发呆">#}
+{#                </div>#}
+{#            </div>#}
+
+            <div class="layui-form-item" >
+                <label class="layui-form-label">是否开启</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="vulStatus" lay-filter="switchVulStatus" lay-skin="switch" lay-text="是|否">
+                </div>
+            </div>
+
+            <div class="layui-form-item" >
+                <label class="layui-form-label">是否处理</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="vulOption" lay-filter="checkedVulOption" value="未处理" title="未处理" checked="">
+                    <input type="radio" name="vulOption" lay-filter="checkedVulOption" value="已处理" title="已处理">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">漏洞详情</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" lay-verify="content" class="layui-textarea" name="vulDetail"></textarea>
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item layui-upload">
+                <label class="layui-form-label">添加文件</label>
+                <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+                <button type="button" class="layui-btn" id="test9">开始上传</button>
+            </div>
+
+
+
+
+            <div class="layui-form-item layui-upload">
+                <label class="layui-form-label">添加文件</label>
+                <div class="layui-form-item layui-upload-drag " id="test10">
+                    <i class="layui-icon"></i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="submitVulMassage">立即提交</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{#<script src="/static/layui/layui.js" charset="utf-8"></script>#}
+
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        /**
+         * 初始化表单，要加上，不然刷新部分组件可能会不加载
+         */
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 1) {
+                    return '文本框不能为空！';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+
+                layedit.sync(editIndex);
+
+            }
+        });
+
+        //监听是否开启
+        form.on('switch(switchVulStatus)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听是否处理
+        form.on('checked(checkedVulOption)', function (data) {
+
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+            {#$.get(#}
+            {#    "{:url('checkedVulOptionApi')}",#}
+            {#    "{'id':adminId}",#}
+            {##}
+            {#    function(data){#}
+            {#        //设置是否通知#}
+            {#        alert(data.vulOption)#}
+            {#        if(data.vulOption == true){#}
+            {#            $("input[name=vulOption][value=false]").prop("checked","false");#}
+            {#            $("input[name=vulOption][value=true]").prop("checked","true");#}
+            {#        }#}
+            {#        form.render(); //更新全部#}
+            {#    }#}
+            {#);#}
+        });
+
+
+
+        //监听提交
+        {#form.render();#}
+        {#var form = layui.form;#}
+        form.on('submit(submitVulMassage)', function(data) {
+
+
+            var $ = layui.jquery;
+            layer.confirm('你确定上传么？', {
+               time: 2000000 ,//2秒自动关闭
+               btn: ['确定', '取消'],
+               btn1: function(index){
+                    console.log(data.field);
+                    var token = "csrf_token"
+                   $.ajax({
+                        {#url:"{:U('submitVulMassageApi')}",#}
+                       url:"submitVulMassageApi.html",
+                       data:{'id':data.field},
+                       type:"Post",
+                       dataType:"json",
+                       success:function(data){
+                           console.log(data);
+                           layer.msg(data.msg);
+                           location.reload(); //删除成功后再刷新
+                       },
+                       error:function(data){
+                           alert('错误',data.msg);
+                       }
+                   });
+                   layer.close(index);
+               }
+            }
+            );
+        });
+        {#form.on('submit(submitVulMassage)', function (data) {#}
+            {#layer.alert(JSON.stringify(data.field), {#}
+            {#    title: '最终的提交信息'#}
+
+
+        //表单初始赋值
+        form.val('example', {
+            "vulNum": "cve-2017-0146" // "name": "value"
+            , "vulName": "永恒之蓝"
+            , "vulType": "未指定"
+            , "like[write]": true //复选框选中状态
+            , "vulStatus": "否" //开关状态
+            , "vulOption": "未处理"
+            , "vulDetail": "我爱 layui"
+        })
+
+
+
+        //表单取值
+        layui.$('#LAY-component-form-getval').on('click', function(){
+            var data = form.val('example');
+            alert(JSON.stringify(data));
+        });
+
+
+
+    });
+</script>
+
+
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#test8'
+            ,url: '/upload/'
+            ,auto: false
+            //,multiple: true
+            ,bindAction: '#test9'
+            ,done: function(res){
+                console.log(res)
+            }
+        });
+
+        //拖拽上传
+        upload.render({
+            elem: '#test10'
+            ,url: '/upload/'
+            ,done: function(res){
+                console.log(res)
+            }
+        });
+
+
+    });
+</script>
